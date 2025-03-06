@@ -8,7 +8,7 @@ Ader permet de lire et modifier ce fichier par une interface graphique en profit
 
 
 ## Prerequisites
-* FreeCAD >= v0.20
+* FreeCAD >= v1.0.0
 
 
 ## Installation
