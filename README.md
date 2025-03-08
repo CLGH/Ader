@@ -1,6 +1,6 @@
 # The FreeCAD Ader Workbench
 
-![Ader-UI-screen](doc/resources/avion_ader.png)
+![Clément Ader](doc/resources/clement_ader_1891.jpg)
 
 Cet atelier comprend des outils pour faciliter le dessin d'un avion.
 Il s'appuie sur la norme CPACS (https://cpacs.de/) qui décrit un avion (et plus) sous forme d'un fichier xml.
