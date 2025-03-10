@@ -24,7 +24,7 @@ Nota : sous Windows les addons sont dans C:\Utilisateurs\<Nom utilisateur>\Appda
 Cet atelier se nomme Ader en hommage à Clément Ader, pionnier de l'aviation. En souhaitant qu'il ait une suite aussi riche que l'aviation depuis M. Ader.
 ![Ader-Clement](doc/resources/clement_ader_1891.jpg)
 
-nter-Action http://inter.action.free.fr/ est fortement recommandée !
+Si vous vous intéressez à la conception avion, l'adhésion à l'association Inter-Action http://inter.action.free.fr/ est fortement recommandée !
 
 ## Feedback
 
