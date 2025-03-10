@@ -8,7 +8,7 @@ Ader permet de lire et modifier ce fichier par une interface graphique en profit
 
 
 ## Prerequisites
-* FreeCAD >= v0.20
+* FreeCAD >= v1.0.0
 
 
 ## Installation
@@ -21,10 +21,10 @@ Nota : sous Windows les addons sont dans C:\Utilisateurs\<Nom utilisateur>\Appda
 
 ## Usage
 
-
-
 Cet atelier se nomme Ader en hommage à Clément Ader, pionnier de l'aviation. En souhaitant qu'il ait une suite aussi riche que l'aviation depuis M. Ader.
 ![Ader-Clement](doc/resources/clement_ader_1891.jpg)
+
+nter-Action http://inter.action.free.fr/ est fortement recommandée !
 
 ## Feedback
 
