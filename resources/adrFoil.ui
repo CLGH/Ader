@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>foilTaskPanel</class>
+ <widget class="QDialog" name="foilTaskPanel">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>262</width>
+    <height>209</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Foil / rib parameters</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>9</number>
+       </property>
+       <item row="7" column="0">
+        <widget class="QRadioButton" name="rbPad">
+         <property name="text">
+          <string>Pad length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lSetting">
+         <property name="text">
+          <string>Setting [°] :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lProfil">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>15</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Dat file :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QSpinBox" name="sbPadLength">
+         <property name="minimum">
+          <number>10</number>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="value">
+          <number>5000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QRadioButton" name="rbSketchOnly">
+         <property name="text">
+          <string>Sketch only</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="sbChord">
+         <property name="decimals">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <double>9999999999999999455752309870428160.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="ly">
+         <property name="text">
+          <string>y :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lChord">
+         <property name="text">
+          <string>Chord :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDoubleSpinBox" name="sbSetting">
+         <property name="suffix">
+          <string>°</string>
+         </property>
+         <property name="minimum">
+          <double>-180.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>180.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QDoubleSpinBox" name="sby">
+         <property name="maximum">
+          <double>1000000000000000043845843045076197354634047651840.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="eDat">
+         <property name="text">
+          <string>nlf416</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="bbButtons">
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+     <property name="centerButtons">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>bbButtons</sender>
+   <signal>accepted()</signal>
+   <receiver>foilTaskPanel</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>345</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bbButtons</sender>
+   <signal>rejected()</signal>
+   <receiver>foilTaskPanel</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>345</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
