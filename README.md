@@ -20,7 +20,7 @@ Une feuille de spécifications est créée : remplissez les caractéristiques de
 Pour les profils donnez le nom du fichier dat. Les fichers *.dat, compilés par l'UUIC (https://m-selig.ae.illinois.edu/ads/coord_database.html), sont dans le répertoire dat_profiles de l'atelier.
 
 Cliquez sur le bouton Construire pour construire la trame de votre projet.
-![Specs](/doc/resources/ader_build.png)
+![Build](/doc/resources/ader_build.png)
 
 ## Usage
 Après construction tous les profils et cadres sont modifiables par le sketcher.
