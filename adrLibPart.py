@@ -48,11 +48,12 @@ def NewSketch(name='Sketch', plane='XY', body=None):
 
   return sk
 
-def MakeSpline(vects, name='skSpline', plane='XY', body=None):
+def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
-  sk=NewSketch(name, plane, body)
+  if sk == None:
+    sk=NewSketch(name, plane, body)
 
   for vect in vects:
     sk.addGeometry(Part.Point(vect),True)
@@ -62,12 +63,12 @@ def MakeSpline(vects, name='skSpline', plane='XY', body=None):
   mults = []
   bsps = []
   bsps.append(Part.BSplineCurve())
-  bsps[-1].interpolate(vects, PeriodicFlag=False)
+  bsps[-1].interpolate(vects, PeriodicFlag=perodic)
   bsps[-1].increaseDegree(3)
   poles.extend(bsps[-1].getPoles())
   knots.extend(bsps[-1].getKnots())
   mults.extend(bsps[-1].getMultiplicities())
-  sk.addGeometry(Part.BSplineCurve(poles,mults,knots,False,3,None,False),False)
+  sk.addGeometry(Part.BSplineCurve(poles,mults,knots,perodic,3,None,False),False)
   del(bsps)
   del(poles)
   del(knots)
@@ -82,10 +83,10 @@ def MakeSpline(vects, name='skSpline', plane='XY', body=None):
   sk.addConstraint(conList)
   del conList
 
-  sk.exposeInternalGeometry(nb)  
+  #sk.exposeInternalGeometry(nb)  
   return sk
 
-def MakeFrame(largeur, hauteur, offset, x=0, name='skFrame', plane='YZ', body=None):
+def MakeFrame(frameWidth, frame_height, offset, x=0, name='skFrame', plane='YZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
@@ -93,10 +94,10 @@ def MakeFrame(largeur, hauteur, offset, x=0, name='skFrame', plane='YZ', body=No
 
   # create limit frame 
   constrGeoList = []
-  constrGeoList.append(Part.LineSegment(App.Vector(-largeur/2, hauteur-offset, 0),App.Vector(-largeur/2, -offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(-largeur/2, -offset, 0),App.Vector(largeur/2, -offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(largeur/2, -offset, 0),App.Vector(largeur/2, hauteur-offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(largeur/2, hauteur-offset, 0),App.Vector(-largeur/2, hauteur-offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, frame_height-offset, 0),App.Vector(-frameWidth/2, -offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, -offset, 0),App.Vector(frameWidth/2, -offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, -offset, 0),App.Vector(frameWidth/2, frame_height-offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, frame_height-offset, 0),App.Vector(-frameWidth/2, frame_height-offset, 0)))
   sk.addGeometry(constrGeoList,True)
   del constrGeoList
 
@@ -109,8 +110,8 @@ def MakeFrame(largeur, hauteur, offset, x=0, name='skFrame', plane='YZ', body=No
   constraintList.append(Sketcher.Constraint('Vertical', 2))
   constraintList.append(Sketcher.Constraint('Horizontal', 1))
   constraintList.append(Sketcher.Constraint('Symmetric',0,1,2,2,-2))
-  constraintList.append(Sketcher.Constraint('DistanceX',3,2,3,1,largeur))
-  constraintList.append(Sketcher.Constraint('DistanceY',2,1,2,2,hauteur))
+  constraintList.append(Sketcher.Constraint('DistanceX',3,2,3,1,frameWidth))
+  constraintList.append(Sketcher.Constraint('DistanceY',2,1,2,2,frame_height))
   constraintList.append(Sketcher.Constraint('DistanceY',0,2,-1,1,offset))
   sk.addConstraint(constraintList)
   del constraintList
@@ -118,15 +119,18 @@ def MakeFrame(largeur, hauteur, offset, x=0, name='skFrame', plane='YZ', body=No
   # Points 
   nbPoints=8   #12
   vects=[]
-  h=hauteur/2
-  w=largeur/2
+  h=frame_height/2
+  w=frameWidth/2
   for i in range(0, nbPoints-1):
-    angle=radians(2*pi/nbPoints*i)
+    angle=i*2*pi/nbPoints
     r=sqrt((w*cos(angle))**2+(h*sin(angle))**2)
     x=r*cos(angle)
-    y=r*sin(angle)+offset
-    vects.Append(Part.Point(App.Vector(x,y,0)))
+    y=r*sin(angle)+h+offset
+    vects.append(App.Vector(x,y,0))
     sk.addGeometry(Part.Point(App.Vector(x,y,0)),True)
+
+  MakeSpline(vects, perodic=True, sk=sk)
+  #MakeSpline(vects, sk=sk)
 
   return sk
 

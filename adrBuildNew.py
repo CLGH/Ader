@@ -132,7 +132,7 @@ class CommandBuildNew:
        
         # display
         App.ActiveDocument.recompute()
-
+        Gui.SendMsgToActiveView("ViewFit")
 
 if App.GuiUp:
     #register the FreeCAD command
