@@ -63,7 +63,7 @@ def MakeSketchFromDat(datFile, length, setting=0, sk_y=0, dieth=0, skBody=None):
     # set y position
     y=sk_y*sin(radians(dieth))
     z=sk_y*cos(radians(dieth))
-    sk.AttachmentOffset = App.Placement(App.Vector(0,y,z),App.Rotation(App.Vector(1,0,0),-dieth))  
+    sk.AttachmentOffset = App.Placement(App.Vector(0,y,z), App.Rotation(App.Vector(1,0,0), -dieth))  
     return name, sk
 
 class CommandFoil:
