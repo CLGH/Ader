@@ -18,6 +18,7 @@ __title__="App Ader Common"
 __author__ = "Claude GUTH "
 __url__ = "https://.fr"
 
+import configparser
 import os
 import FreeCAD as App
 from PySide import QtCore
@@ -65,3 +66,63 @@ def ListDatProfiles():
         profiles.append(open(os.path.join(dat_path, f), 'r', errors='ignore').readline().strip())
         
     return files, profiles
+
+# persistance handling
+iniFilename=os.path.join(base_path, "Ader.ini")
+def GetValue(section, key, defaultValue):
+    """
+    Get persistant value (str, int, float ou bool) from Ader.ini file.
+     """
+    config = configparser.ConfigParser()
+    config.optionxform = str  # case sensitive
+    
+    if os.path.exists(iniFilename):
+        config.read(iniFilename, encoding='utf-8')
+    else:
+        return defaultValue
+
+    if section not in config:
+        return defaultValue
+    elif key not in config[section]:
+        return defaultValue  
+    else:
+        raw_value = config[section][key]
+        # Cast ?
+        for caster in (str_to_bool, int, float):
+            try:
+                return caster(raw_value)
+            except ValueError:
+                pass
+        
+        return raw_value  # default
+
+
+def SaveValue(section, key, value):
+    """
+    Save persistant value (str, int, float ou bool) in Ader.ini file.
+    """
+    config = configparser.ConfigParser()
+    config.optionxform = str  # case sensitive
+    
+    if os.path.exists(iniFilename):
+        config.read(iniFilename, encoding='utf-8')
+    
+    if section not in config:
+        config[section] = {}
+    
+    config[section][key] = str(value)
+    
+    with open(iniFilename, 'w', encoding='utf-8') as f:
+        config.write(f)
+    
+    return True
+
+def str_to_bool(s):
+    """ Cast 'true', 'false', '1', '0' as bool."""
+    s_lower = s.strip().lower()
+    if s_lower in ('true', '1', 'yes', 'on'):
+        return True
+    elif s_lower in ('false', '0', 'no', 'off'):
+        return False
+    else:
+        raise ValueError(f"Not a boolean : {s}")
