@@ -54,9 +54,11 @@ def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=
     raise Exception("Pas de document actif") 
   if sk == None:
     sk=NewSketch(name, plane, body)
-
+  originIx=sk.GeometryCount                # get nb elements
+  nb=len(vects)
+ 
   for vect in vects:
-    sk.addGeometry(Part.Point(vect),True)
+    sk.addGeometry(Part.Point(vect),True)  # add nb elements
 
   poles = []
   knots = []
@@ -69,21 +71,22 @@ def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=
   knots.extend(bsps[-1].getKnots())
   mults.extend(bsps[-1].getMultiplicities())
   sk.addGeometry(Part.BSplineCurve(poles,mults,knots,perodic,3,None,False),False)
+  splineIx= originIx + nb
   del(bsps)
   del(poles)
   del(knots)
   del(mults)
 
-  nb=len(vects)
   conList = []
-  for i in range(0, nb-1):
-    conList.append(Sketcher.Constraint('InternalAlignment:Sketcher::BSplineKnotPoint',i,1,nb,i))
+  for i in range(0, nb):
+    constraint = Sketcher.Constraint('InternalAlignment:Sketcher::BSplineKnotPoint', i+originIx, 1, splineIx, i)
+    conList.append(constraint) 
   if vects[0] == vects[-1]:
-    conList.append(Sketcher.Constraint('Coincident', nb-1, 1, 0, 1))
+    conList.append(Sketcher.Constraint('Coincident', originIx+nb-1, 1, 0, 1))
   sk.addConstraint(conList)
   del conList
+  sk.exposeInternalGeometry(splineIx)
 
-  #sk.exposeInternalGeometry(nb)  
   return sk
 
 def MakeFrame(frameWidth, frame_height, offset, x=0, name='skFrame', plane='YZ', body=None):
