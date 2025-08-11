@@ -56,8 +56,21 @@ class CommandFrame:
     def Activated(self):
         loader=QtUiTools.QUiLoader()
         self.form=loader.load(ui_file)
+
+        # default values
+        self.form.sbHeight.setValue (wb.GetValue('Frame', 'height', 100))
+        self.form.sbWidth.setValue  (wb.GetValue('Frame', 'width', 75))
+        self.form.sbOffset.setValue (wb.GetValue('Frame', 'offset', 0))
+        self.form.sbx.setValue      (wb.GetValue('Frame', 'x', 0))
+
         if not self.form.exec_():
             quit()
+        
+        # save values
+        wb.SaveValue('Frame', 'height', self.form.sbHeight.value())
+        wb.SaveValue('Frame', 'width', self.form.sbWidth.value())
+        wb.SaveValue('Frame', 'offset', self.form.sbOffset.value())
+        wb.SaveValue('Frame', 'x', self.form.sbx.value())
         
         height = self.form.sbHeight.value()
         width = self.form.sbWidth.value()

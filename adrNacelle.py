@@ -61,9 +61,26 @@ class CommandNacelle:
     def Activated(self):
         loader=QtUiTools.QUiLoader()
         self.form=loader.load(ui_file)
+
+        # default values
+        self.form.sbLength.setValue   (wb.GetValue('Nacelle', 'length', 1000))
+        self.form.sbDiameter.setValue (wb.GetValue('Nacelle', 'diameter', 400))
+        self.form.sbNbPoints.setValue (wb.GetValue('Nacelle', 'nbPoints', 100))
+        self.form.rbLyon.setChecked   (wb.GetValue('Nacelle', 'Lyon', True))
+        self.form.rbHoerner.setChecked(wb.GetValue('Nacelle', 'Hoerner', False))
+        self.form.rbDuhamel.setChecked(wb.GetValue('Nacelle', 'Duhamel', False))
+
         if not self.form.exec_():
             quit()
-        
+           
+        # save values
+        wb.SaveValue('Nacelle', 'length', self.form.sbLength.value())
+        wb.SaveValue('Nacelle', 'diameter', self.form.sbDiameter.value())
+        wb.SaveValue('Nacelle', 'nbPoints', self.form.sbNbPoints.value())
+        wb.SaveValue('Nacelle', 'Lyon', self.form.rbLyon.isChecked())
+        wb.SaveValue('Nacelle', 'Hoerner', self.form.rbHoerner.isChecked())
+        wb.SaveValue('Nacelle', 'Duhamel', self.form.rbDuhamel.isChecked())
+      
         XMaxRel= 0
         length=self.form.sbLength.value()
         diameter=self.form.sbDiameter.value()

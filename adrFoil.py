@@ -81,16 +81,18 @@ class CommandFoil:
         loader=QtUiTools.QUiLoader()
         self.form=loader.load(ui_file)
 
-        self.form.eDat.setText(wb.GetValue('Foil', 'datFile', 'nlf416'))
-        self.form.sbChord.setValue(wb.GetValue('Foil', 'chord', 1000))
-        self.form.sbSetting.setValue(wb.GetValue('Foil', 'setting', 0))
-        self.form.sby.setValue(wb.GetValue('Foil', 'y', 0))
-        self.form.rbPad.setChecked(wb.GetValue('Foil', 'pad', False))
+        # default values
+        self.form.eDat.setText        (wb.GetValue('Foil', 'datFile', 'nlf416'))
+        self.form.sbChord.setValue    (wb.GetValue('Foil', 'chord', 1000))
+        self.form.sbSetting.setValue  (wb.GetValue('Foil', 'setting', 0))
+        self.form.sby.setValue        (wb.GetValue('Foil', 'y', 0))
+        self.form.rbPad.setChecked    (wb.GetValue('Foil', 'pad', False))
         self.form.sbPadLength.setValue(wb.GetValue('Foil', 'lPad', 5000))
 
         if not self.form.exec_():
             quit()
         
+        # save values
         wb.SaveValue('Foil', 'datFile', self.form.eDat.text())
         wb.SaveValue('Foil', 'chord', self.form.sbChord.value())
         wb.SaveValue('Foil', 'setting', self.form.sbSetting.value())
