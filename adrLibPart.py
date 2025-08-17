@@ -95,27 +95,31 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, name='skFrame', plane='YZ', 
     raise Exception("Pas de document actif") 
   sk = NewSketch(name, plane, body)
 
-  # create limit frame (elements 0..3, left line first)
+  # create limit frame (elements 0..3, top horizontal line first, clock wise)
   constrGeoList = []
-  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, frameHeight-offset, 0),App.Vector(-frameWidth/2, -offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, -offset, 0),App.Vector(frameWidth/2, -offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, -offset, 0),App.Vector(frameWidth/2, frameHeight-offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, frameHeight-offset, 0),App.Vector(-frameWidth/2, frameHeight-offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, frameHeight-offset, 0),App.Vector(frameWidth/2, frameHeight-offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, frameHeight-offset, 0),App.Vector(frameWidth/2, -offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(frameWidth/2, -offset, 0),App.Vector(-frameWidth/2, -offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, -offset, 0),App.Vector(-frameWidth/2, frameHeight-offset, 0)))
   sk.addGeometry(constrGeoList,True)
   del constrGeoList
-
+  topFrameIx=0
+  rightFrameIx=1
+  bottomFrameIx=2
+  leftFrameIx=3   
+  
   constraintList = []
   constraintList.append(Sketcher.Constraint('Coincident', 0, 2, 1, 1))
   constraintList.append(Sketcher.Constraint('Coincident', 1, 2, 2, 1))
   constraintList.append(Sketcher.Constraint('Coincident', 2, 2, 3, 1))
   constraintList.append(Sketcher.Constraint('Coincident', 3, 2, 0, 1))
-  constraintList.append(Sketcher.Constraint('Vertical', 0))
-  constraintList.append(Sketcher.Constraint('Vertical', 2))
-  constraintList.append(Sketcher.Constraint('Horizontal', 1))
-  constraintList.append(Sketcher.Constraint('Symmetric',0,1,2,2,-2))
-  constraintList.append(Sketcher.Constraint('DistanceX',1,2,1,1,frameWidth))
-  constraintList.append(Sketcher.Constraint('DistanceY',0,2,0,1,frameHeight))
-  constraintList.append(Sketcher.Constraint('DistanceY',0,2,-1,1,offset))
+  constraintList.append(Sketcher.Constraint('Vertical', 1))
+  constraintList.append(Sketcher.Constraint('Vertical', 3))
+  #constraintList.append(Sketcher.Constraint('Horizontal', 1))
+  #constraintList.append(Sketcher.Constraint('Symmetric',0,1,2,2,-2))
+  #constraintList.append(Sketcher.Constraint('DistanceX',1,2,1,1,frameWidth))
+  #constraintList.append(Sketcher.Constraint('DistanceY',0,2,0,1,frameHeight))
+  #constraintList.append(Sketcher.Constraint('DistanceY',0,2,-1,1,offset))
   sk.addConstraint(constraintList)
   del constraintList
 
@@ -124,7 +128,7 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, name='skFrame', plane='YZ', 
   vects=[]
   h=frameHeight/2
   w=frameWidth/2
-  # points for spline (elements 4..nbPoints+3)
+  # points for spline (elements 4..nbPoints+3 from top clockwise)
   for i in range(0, nbPoints):
     angle=i*2*pi/nbPoints
     r=sqrt((w*sin(angle))**2+(h*cos(angle))**2)
@@ -135,28 +139,31 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, name='skFrame', plane='YZ', 
 
   MakeSpline(vects, perodic=True, sk=sk)
 
-  pointTopIx=4                          # top point element index
-  pointBottomIx=pointTopIx+nbPoints/2   # bottom point element index
-  pointRightIx=pointTopIx+nbPoints/4    # right point element Ix
-  pointLeftIx=pointRightIx+nbPoints/2   # left point element Ix
+  pointTopIx=4                           # first point : top point element index
+  pointBottomIx=pointTopIx+nbPoints//2   # bottom point element index
+  pointRightIx=pointTopIx+nbPoints//4    # right point element Ix
+  pointLeftIx=pointRightIx+nbPoints//2   # left point element Ix
+  splineIx=4+nbPoints                    # spline element index
+  firstCircleIx=4+nbPoints+1             # first circle element index
+  lastCircleIx=firstCircleIx+nbPoints+1  # last circle element index
   constraintList = []
   # center points on axis
-  constraintList.append(Sketcher.Constraint('PointOnObject', int(pointTopIx), 1, -2))
-  constraintList.append(Sketcher.Constraint('PointOnObject', int(pointBottomIx), 1, -2))
+  constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,      -2))  # not pointTopIx ?
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointBottomIx,1, -2))
   # in frame constraints
-  constraintList.append(Sketcher.Constraint('Tangent',int(pointTopIx),1,3))
-  constraintList.append(Sketcher.Constraint('Tangent',int(pointBottomIx),1,1))
-  constraintList.append(Sketcher.Constraint('Tangent',int(pointLeftIx),1,2))
-  constraintList.append(Sketcher.Constraint('Tangent',int(pointRightIx),1,0))
+  #constraintList.append(Sketcher.Constraint('Tangent', splineIx,1,      topFrameIx))
+  #constraintList.append(Sketcher.Constraint('Tangent', pointRightIx,1,  rightFrameIx))
+  #constraintList.append(Sketcher.Constraint('Tangent', pointBottomIx,1, bottomFrameIx))
+  #constraintList.append(Sketcher.Constraint('Tangent', pointLeftIx,1,   leftFrameIx))
+
   # points symetry
-  #for i in range(pointTopIx+1, pointBottomIx):
-    #constraintList.append(Sketcher.Constraint('Symmetric', i,1, 16-i,1, -2)) # points symetry
-  constraintList.append(Sketcher.Constraint('Symmetric', 5,1, 11,1, -2)) # points symetry
-  constraintList.append(Sketcher.Constraint('Symmetric', 6,1, 10,1,-2))
-  constraintList.append(Sketcher.Constraint('Symmetric', 7,1, 9,1,-2))
-  constraintList.append(Sketcher.Constraint('Symmetric', 21,3, 15,3, -2)) # circles symetry
-  constraintList.append(Sketcher.Constraint('Symmetric', 20,3, 16,3, -2))
-  constraintList.append(Sketcher.Constraint('Symmetric', 19,3, 17,3,-2))  
+  for i in range(1, nbPoints//2):
+    constraintList.append(Sketcher.Constraint('Symmetric', pointTopIx+i,1,    pointTopIx+nbPoints-i,1,    -2)) # points symetry
+    #constraintList.append(Sketcher.Constraint('Symmetric', firstCircleIx+i,3, firstCircleIx+nbPoints-i,3, -2)) # circles symetry
+  constraintList.append(Sketcher.Constraint('Symmetric', firstCircleIx,3, lastCircleIx,3, -2)) # circles symetry
+  #constraintList.append(Sketcher.Constraint('Symmetric', 21,3, 15,3, -2)) # circles symetry
+  #constraintList.append(Sketcher.Constraint('Symmetric', 20,3, 16,3, -2))
+  #constraintList.append(Sketcher.Constraint('Symmetric', 19,3, 17,3, -2))  
   sk.addConstraint(constraintList)
   del constraintList
 
