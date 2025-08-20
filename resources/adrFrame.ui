@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>262</width>
-    <height>149</height>
+    <height>241</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -95,6 +95,9 @@
        </item>
        <item row="0" column="1">
         <widget class="QDoubleSpinBox" name="sbHeight">
+         <property name="decimals">
+          <number>0</number>
+         </property>
          <property name="maximum">
           <double>1000000000000000043845843045076197354634047651840.000000000000000</double>
          </property>
@@ -104,11 +107,49 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QDoubleSpinBox" name="sbx"/>
+        <widget class="QDoubleSpinBox" name="sbx">
+         <property name="decimals">
+          <number>0</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="ckConstrained">
+     <property name="text">
+      <string>Constrained dimensions</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="rb8">
+     <property name="text">
+      <string>8 points</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="rb12">
+     <property name="text">
+      <string>12 points</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="rb16">
+     <property name="text">
+      <string>16 points</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="bbButtons">

@@ -58,25 +58,40 @@ class CommandFrame:
         self.form=loader.load(ui_file)
 
         # default values
-        self.form.sbHeight.setValue (wb.GetValue('Frame', 'height', 100))
-        self.form.sbWidth.setValue  (wb.GetValue('Frame', 'width', 75))
-        self.form.sbOffset.setValue (wb.GetValue('Frame', 'offset', 0))
-        self.form.sbx.setValue      (wb.GetValue('Frame', 'x', 0))
+        self.form.sbHeight.setValue   (wb.GetValue('Frame', 'height', 100))
+        self.form.sbWidth.setValue    (wb.GetValue('Frame', 'width', 75))
+        self.form.sbOffset.setValue   (wb.GetValue('Frame', 'offset', 0))
+        self.form.sbx.setValue        (wb.GetValue('Frame', 'x', 0))
+        self.form.rb8.setChecked      (wb.GetValue('Frame', 'Nb8', True))
+        self.form.rb12.setChecked     (wb.GetValue('Frame', 'Nb12', False))
+        self.form.rb16.setChecked     (wb.GetValue('Frame', 'Nb16', False))
+        self.form.ckConstrained.setChecked(wb.GetValue('Frame', 'Constrained', False))
 
         if not self.form.exec_():
             quit()
         
         # save values
         wb.SaveValue('Frame', 'height', self.form.sbHeight.value())
-        wb.SaveValue('Frame', 'width', self.form.sbWidth.value())
+        wb.SaveValue('Frame', 'width',  self.form.sbWidth.value())
         wb.SaveValue('Frame', 'offset', self.form.sbOffset.value())
-        wb.SaveValue('Frame', 'x', self.form.sbx.value())
+        wb.SaveValue('Frame', 'x',      self.form.sbx.value())
+        wb.SaveValue('Frame', 'Nb8',    self.form.rb8.isChecked())
+        wb.SaveValue('Frame', 'Nb12',   self.form.rb12.isChecked())
+        wb.SaveValue('Frame', 'Nb16',   self.form.rb16 .isChecked())
+        wb.SaveValue('Frame', 'Constrained', self.form.ckConstrained.isChecked())
         
         height = self.form.sbHeight.value()
         width = self.form.sbWidth.value()
         offset = self.form.sbOffset.value()
         x=self.form.sbx.value()
-        sk= adrLibPart.MakeFrame(height, width, offset, x) 
+        if self.form.rb8.isChecked(): 
+            nb=8
+        elif self.form.rb12.isChecked(): 
+            nb=12
+        elif self.form.rb16.isChecked(): 
+            nb=16
+        constrained=self.form.ckConstrained.isChecked()
+        sk= adrLibPart.MakeFrame(height, width, offset, x, fixedFrame=constrained, nbPoints=nb) 
 
         # display
         App.ActiveDocument.recompute()

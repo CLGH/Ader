@@ -89,7 +89,7 @@ def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=
 
   return sk
 
-def MakeFrame(frameHeight, frameWidth, offset, x=0, name='skFrame', plane='YZ', body=None):
+def MakeFrame(frameHeight, frameWidth, offset, x=0, fixedFrame= True, nbPoints=8, name='skFrame', plane='YZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
@@ -116,15 +116,16 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, name='skFrame', plane='YZ', 
   constraintList.append(Sketcher.Constraint('Horizontal', 0))
   constraintList.append(Sketcher.Constraint('Vertical', 1))
   constraintList.append(Sketcher.Constraint('Vertical', 3))
+  
   #constraintList.append(Sketcher.Constraint('Symmetric',0,1,2,2,-2))
-  #constraintList.append(Sketcher.Constraint('DistanceX',1,2,1,1,frameWidth))
-  #constraintList.append(Sketcher.Constraint('DistanceY',0,2,0,1,frameHeight))
-  #constraintList.append(Sketcher.Constraint('DistanceY',0,2,-1,1,offset))
+  if fixedFrame:
+    constraintList.append(Sketcher.Constraint('DistanceX', topFrameIx,1, topFrameIx,2, frameWidth))
+    constraintList.append(Sketcher.Constraint('DistanceY', rightFrameIx,2, rightFrameIx,1, frameHeight))
+    constraintList.append(Sketcher.Constraint('DistanceY', rightFrameIx,2, -1,1, offset))
   sk.addConstraint(constraintList)
   del constraintList
 
   # Points 
-  nbPoints=8   #12
   vects=[]
   h=frameHeight/2
   w=frameWidth/2

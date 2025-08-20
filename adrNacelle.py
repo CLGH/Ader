@@ -69,17 +69,19 @@ class CommandNacelle:
         self.form.rbLyon.setChecked   (wb.GetValue('Nacelle', 'Lyon', True))
         self.form.rbHoerner.setChecked(wb.GetValue('Nacelle', 'Hoerner', False))
         self.form.rbDuhamel.setChecked(wb.GetValue('Nacelle', 'Duhamel', False))
+        self.form.rbNACA.setChecked   (wb.GetValue('Nacelle', 'NACA', False))
 
         if not self.form.exec_():
             quit()
            
         # save values
-        wb.SaveValue('Nacelle', 'length', self.form.sbLength.value())
+        wb.SaveValue('Nacelle', 'length',   self.form.sbLength.value())
         wb.SaveValue('Nacelle', 'diameter', self.form.sbDiameter.value())
         wb.SaveValue('Nacelle', 'nbPoints', self.form.sbNbPoints.value())
-        wb.SaveValue('Nacelle', 'Lyon', self.form.rbLyon.isChecked())
-        wb.SaveValue('Nacelle', 'Hoerner', self.form.rbHoerner.isChecked())
-        wb.SaveValue('Nacelle', 'Duhamel', self.form.rbDuhamel.isChecked())
+        wb.SaveValue('Nacelle', 'Lyon',     self.form.rbLyon.isChecked())
+        wb.SaveValue('Nacelle', 'Hoerner',  self.form.rbHoerner.isChecked())
+        wb.SaveValue('Nacelle', 'Duhamel',  self.form.rbDuhamel.isChecked())
+        wb.SaveValue('Nacelle', 'NACA',     self.form.rbNACA.isChecked())
       
         XMaxRel= 0
         length=self.form.sbLength.value()
