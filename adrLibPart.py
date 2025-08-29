@@ -167,6 +167,123 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, fixedFrame= True, nbPoints=8
 
   return sk
 
+
+def MakeTopSketch(aircraftLength, aircraftWidth, fixedFrame= True, nbPoints=8, name='skTopView', plane='XY', body=None):
+  doc=App.ActiveDocument
+  if doc == None:
+    raise Exception("Pas de document actif") 
+  if body==None:
+    body=doc.getObject('Body')
+    if body == None:
+      raise Exception("Pas de corps actif") 
+	
+  sk = NewSketch(name, plane, body)
+
+  #l_2=aircraftLength/2
+  w_2=aircraftWidth/2
+  xRelMax= 0.33
+
+  # Points 
+  vects=[]
+  #   Points from tail (elements 0..NbPointsTail-1)
+  NbPointsTail=4
+  step=(1-xRelMax)*aircraftLength/(NbPointsTail-1)
+  for i in range(0, NbPointsTail):
+    x=aircraftLength -i*step
+    y=i*aircraftWidth/6
+    vects.append(App.Vector(x,y,0))
+  xMax=x
+  #   Points to front (elements NbPointsTai1..NbPointsTail+NbPointsFront-1)
+  NbPointsFront=5
+  step=xRelMax*aircraftLength/NbPointsFront
+  for i in range(1, NbPointsFront+1):
+    x=xMax-i*step
+    y= w_2 * math.sqrt(2*x*xMax - x*x) / xMax
+    vects.append(App.Vector(x,y,0))
+  #   symetric points
+  for vect in vects[-2::-1]:
+    vects.append(App.Vector(vect.x,-vect.y,0))
+
+  # test
+  #for vect in vects:
+  #  sk.addGeometry(Part.Point(vect),False)
+
+  MakeSpline(vects, perodic=False, sk=sk)
+
+  # Constraints on spline
+  pointTailFirstIx=0                                  # first point : start at tail
+  pointTailLastIx=2*(NbPointsTail+NbPointsFront-1)    # last point : end at tail
+  pointFrontIx=NbPointsTail+NbPointsFront-1           # front point element index
+  splineIx=pointTailLastIx+1
+  constraintList = []
+  #   front point on origin
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointFrontIx,1, -1,1))  
+  #   first and last points coïncident on axis
+  #constraintList.append(Sketcher.Constraint('Coincident',   pointTailFirstIx,1, pointTailLastIx,1))  # redondant ?
+  constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,      -1))  
+  #   symetric points
+  for i in range(1, NbPointsTail+NbPointsFront-1):
+    constraintList.append(Sketcher.Constraint('Symmetric', i,1,    pointTailLastIx-i-1,1,    -1)) # points symetry 1-15 2-14...7-9
+
+  sk.addConstraint(constraintList)
+  return sk
+
+  pointRightIx=pointTopIx+nbPoints//4    # right point element Ix
+  pointLeftIx=pointRightIx+nbPoints//2   # left point element Ix
+  splineIx=4+nbPoints                    # spline element index
+  firstCircleIx=4+nbPoints+1             # first circle element index
+  #lastCircleIx=firstCircleIx+nbPoints+1  # last circle element index
+  constraintList = []
+  # center points on axis
+  #constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,      -2))  # not pointTopIx ? redondant with top circle symetry
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointBottomIx,1, -2))
+  # in frame constraints
+  constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,      frontFrameIx))
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointRightIx,1,  topFrameIx))
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointBottomIx,1, rearFrameIx))
+  constraintList.append(Sketcher.Constraint('PointOnObject', pointLeftIx,1,   bottomFrameIx))
+
+  # Symetry
+  constraintList.append(Sketcher.Constraint('Symmetric', firstCircleIx,3, firstCircleIx+1,3, -2)) # top circles symetry
+  for i in range(1, nbPoints//2):
+    constraintList.append(Sketcher.Constraint('Symmetric', pointTopIx+i,1,    pointTopIx+nbPoints-i,1,    -2)) # points symetry
+    #constraintList.append(Sketcher.Constraint('Symmetric', firstCircleIx+i,3, firstCircleIx+nbPoints-i,3, -2)) # circles symetry
+  sk.addConstraint(constraintList)
+  del constraintList
+
+
+  # create limit frame (elements 0..3, front vertical line first, clock wise)
+  constrGeoList = []
+  constrGeoList.append(Part.LineSegment(App.Vector(0,              -w_2, 0), App.Vector(0,               w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(0,               w_2, 0), App.Vector(aircraftLength,  w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength,  w_2, 0), App.Vector(aircraftLength, -w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength, -w_2, 0), App.Vector(0,              -w_2, 0)))
+  sk.addGeometry(constrGeoList,True)
+  del constrGeoList
+  frontFrameIx=0
+  topFrameIx=frontFrameIx+1
+  rearFrameIx=frontFrameIx+2
+  bottomFrameIx=frontFrameIx+3   
+  
+  constraintList = []
+  constraintList.append(Sketcher.Constraint('Coincident', 0,2, 1,1))
+  constraintList.append(Sketcher.Constraint('Coincident', 1,2, 2,1))
+  constraintList.append(Sketcher.Constraint('Coincident', 2,2, 3,1))
+  constraintList.append(Sketcher.Constraint('Coincident', 3,2, 0,1))
+  constraintList.append(Sketcher.Constraint('Vertical',   0))
+  constraintList.append(Sketcher.Constraint('Horizontal', 1))
+  constraintList.append(Sketcher.Constraint('Vertical',   2))
+  constraintList.append(Sketcher.Constraint('Horizontal', 3))
+  
+  #constraintList.append(Sketcher.Constraint('Symmetric', 0,1, 2,2, -2))
+  if fixedFrame:
+    constraintList.append(Sketcher.Constraint('DistanceY', frontFrameIx,1, frontFrameIx,2, aircraftWidth))
+    constraintList.append(Sketcher.Constraint('DistanceX', frontFrameIx,2, topFrameIx,2,   aircraftLength))
+    sk.addConstraint(constraintList)
+  del constraintList
+  return sk
+  
+
 def MakePad(sketch, length, name= 'Pad', reversed=0, midplane=0, offset=0):
   body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
