@@ -57,17 +57,24 @@ class CommandBuildNew:
 
         # create bodies
         #   fuselage
-        bf=doc.addObject('PartDesign::Body','Fuselage')
-        bf.Label = 'Cellule'
+        bf=doc.getObject("Fuselage")
+        if bf == None:
+          bf=doc.addObject('PartDesign::Body','Fuselage')
+          bf.Label = 'Cellule'
        #   wing
-        bw=doc.addObject('PartDesign::Body','Wing')
-        bw.Label = 'Aile'
+        
+        bw=doc.getObject("Wing") 
+        if bw == None:
+          bw=doc.addObject('PartDesign::Body','Wing')
+          bw.Label = 'Aile'
         w_x=spec.w_x*1000
         w_z=spec.w_z*1000
         bw.Placement = App.Placement(App.Vector(w_x,0,w_z),App.Rotation(App.Vector(0,0,1),0))
        #   stabs
-        bs=doc.addObject('PartDesign::Body','Stabilizer')
-        bs.Label = 'Empennage'
+        bs=doc.getObject("Stabilizer") 
+        if bs == None:
+          bs=doc.addObject('PartDesign::Body','Stabilizer')
+          bs.Label = 'Empennage'
         s_x=spec.s_x*1000
         s_z=spec.s_z*1000
         bs.Placement = App.Placement(App.Vector(s_x,0,s_z),App.Rotation(App.Vector(0,0,1),0))

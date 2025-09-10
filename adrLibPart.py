@@ -174,7 +174,7 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, fixedFrame= True, nbPoints=8
   return sk
 
 
-def MakeTopSketch(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
+def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
@@ -203,7 +203,7 @@ def MakeTopSketch(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True
   step=xRelMax*aircraftLength/NbPointsFront
   for i in range(1, NbPointsFront+1):
     x=xMax-i*step
-    y= w_2 * math.sqrt(2*x*xMax - x*x) / xMax
+    y= w_2 * sqrt(2*x*xMax - x*x) / xMax
     vects.append(App.Vector(x,y,0))
   #   symetric points
   for vect in vects[-2::-1]:
@@ -275,12 +275,12 @@ def MakeTopSketch(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True
   
   return sk
   
-def MakeFaceSketch(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
+def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True, name='skFaceView', plane='XZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
   if body==None:
-    body=doc.getObject('Body')
+    body=doc.getObject('Fuselage')
     if body == None:
       raise Exception("Pas de corps actif") 
 	

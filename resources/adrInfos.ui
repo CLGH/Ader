@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>337</width>
-    <height>202</height>
+    <width>267</width>
+    <height>227</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,15 +19,8 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0">
-       <item row="2" column="0">
-        <widget class="QLabel" name="LAuthor">
-         <property name="text">
-          <string>Author :</string>
-         </property>
-        </widget>
-       </item>
+     <item row="1" column="0">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0,0,0,0">
        <item row="4" column="0">
         <widget class="QLabel" name="LDate">
          <property name="text">
@@ -35,7 +28,20 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="2" column="0">
+        <widget class="QLabel" name="LAuthor">
+         <property name="text">
+          <string>Author :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="name"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDateTimeEdit" name="dateCreated"/>
+       </item>
+       <item row="8" column="0">
         <widget class="QLabel" name="LCPACS">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -44,7 +50,30 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>CPACS file:</string>
+          <string>CPACS file (optional) :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="CPACS_FileName"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="author"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QSpinBox" name="sbLength">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="value">
+          <number>5000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lLength">
+         <property name="text">
+          <string>Fuselage length [mm]:</string>
          </property>
         </widget>
        </item>
@@ -55,17 +84,39 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="name"/>
+       <item row="6" column="1">
+        <widget class="QSpinBox" name="sbWidth">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="value">
+          <number>600</number>
+         </property>
+        </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="author"/>
+       <item row="7" column="1">
+        <widget class="QSpinBox" name="sbHeight">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+         <property name="value">
+          <number>1000</number>
+         </property>
+        </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QDateTimeEdit" name="dateCreated"/>
+       <item row="6" column="0">
+        <widget class="QLabel" name="lWidth">
+         <property name="text">
+          <string>Fuselage width [mm] :</string>
+         </property>
+        </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="CPACS_FileName"/>
+       <item row="7" column="0">
+        <widget class="QLabel" name="lHeight">
+         <property name="text">
+          <string>Fuselage height [mm] :</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

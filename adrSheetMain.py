@@ -35,17 +35,17 @@ icon_xpm = os.path.join(wb.icons_path, "adrSheetMain.xpm")
 
 # Main sheet parameters
 fuselageParams = [
-    {"alias": "Lfus",  "unite": "m", "value": "", "description": "Longueur totale du fuselage"},
-    {"alias": "l_fus", "unite": "m", "value": "", "description": "Largeur totale du fuselage"},
-    {"alias": "Hfus",  "unite": "m", "value": "", "description": "Hauteur totale du fuselage"},
+    {"alias": "fus_l",      "unite": "m", "value": "0.001", "description": "Longueur totale du fuselage"},
+    {"alias": "fus_w",      "unite": "m", "value": "0.001", "description": "Largeur totale du fuselage"},
+    {"alias": "fus_h",      "unite": "m", "value": "0.001", "description": "Hauteur totale du fuselage"},
 ]
 
 wingParams = [
-    {"alias": "w_x",        "unite": "m", "value": "0", "description": "Position x"},
-    {"alias": "w_z",        "unite": "m", "value": "0", "description": "Position z"},
-    {"alias": "b",          "unite": "m", "value": "",  "description": "Envergure"},
-    {"alias": "dieth",      "unite": "m", "value": "",  "description": "Dièdre"},
-    {"alias": "fleche",     "unite": "°", "value": "",  "description": "Flèche"},
+    {"alias": "w_x",        "unite": "m", "value": "0.001", "description": "Position x"},
+    {"alias": "w_z",        "unite": "m", "value": "0.001", "description": "Position z"},
+    {"alias": "b",          "unite": "m", "value": "0.001",  "description": "Envergure"},
+    {"alias": "dieth",      "unite": "m", "value": "0.001",  "description": "Dièdre"},
+    {"alias": "fleche",     "unite": "°", "value": "0.001",  "description": "Flèche"},
     {"alias": "ci",         "unite": "m", "value": "",  "description": "Corde interne"},
     {"alias": "ci_profile", "unite": "",  "value": "",  "description": "Profil interne (fichier *.dat)"},
     {"alias": "ci_cal",     "unite": "°", "value": "",  "description": "Calage interne"},

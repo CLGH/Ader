@@ -63,11 +63,15 @@ def EditInfos(infos= None):
         ViewProviderInfos(infos.ViewObject)   
     
     # save values
-    infos.cpacs_filename = Gui.form.CPACS_FileName.text()
     infos.name = Gui.form.name.text()
     infos.author = Gui.form.author.text()
-    
-    return infos
+    infos.cpacs_filename = Gui.form.CPACS_FileName.text()
+    fuselageLength = Gui.form.sbLength.value()
+    fuselageWidth = Gui.form.sbWidth.value()
+    fuselageHeight = Gui.form.sbHeight.value()
+ 
+     
+    return infos, fuselageLength, fuselageWidth, fuselageHeight
 
 
 class Infos:
