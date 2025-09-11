@@ -78,7 +78,6 @@ class CommandNew:
         # set top/face views
         adrLibPart.MakeTopView(l, w, body=bf)
         adrLibPart.MakeFaceView(l, h, body=bf)
-    
         
         doc.recompute()
 

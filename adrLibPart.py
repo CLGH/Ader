@@ -174,7 +174,7 @@ def MakeFrame(frameHeight, frameWidth, offset, x=0, fixedFrame= True, nbPoints=8
   return sk
 
 
-def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
+def MakeTopView(fuselageLength, fuselageWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
@@ -185,22 +185,22 @@ def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, 
 	
   sk = NewSketch(name, plane, body)
 
-  #l_2=aircraftLength/2
-  w_2=aircraftWidth/2
+  #l_2=fuselageLength/2
+  w_2=fuselageWidth/2
   
   # Points 
   vects=[]
   #   Points from tail (elements 0..NbPointsTail-1)
   NbPointsTail=4
-  step=(1-xRelMax)*aircraftLength/(NbPointsTail-1)
+  step=(1-xRelMax)*fuselageLength/(NbPointsTail-1)
   for i in range(0, NbPointsTail):
-    x=aircraftLength -i*step
-    y=i*aircraftWidth/6
+    x=fuselageLength -i*step
+    y=i*fuselageWidth/6
     vects.append(App.Vector(x,y,0))
   xMax=x
   #   Points to front (elements NbPointsTai1..NbPointsTail+NbPointsFront-1)
   NbPointsFront=5
-  step=xRelMax*aircraftLength/NbPointsFront
+  step=xRelMax*fuselageLength/NbPointsFront
   for i in range(1, NbPointsFront+1):
     x=xMax-i*step
     y= w_2 * sqrt(2*x*xMax - x*x) / xMax
@@ -243,9 +243,9 @@ def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, 
   bottomFrameIx=topFrameIx+2   
   frontFrameIx=topFrameIx+3
   constrGeoList = []
-  constrGeoList.append(Part.LineSegment(App.Vector(0,               w_2, 0), App.Vector(aircraftLength,  w_2, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength,  w_2, 0), App.Vector(aircraftLength, -w_2, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength, -w_2, 0), App.Vector(0,              -w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(0,               w_2, 0), App.Vector(fuselageLength,  w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(fuselageLength,  w_2, 0), App.Vector(fuselageLength, -w_2, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(fuselageLength, -w_2, 0), App.Vector(0,              -w_2, 0)))
   constrGeoList.append(Part.LineSegment(App.Vector(0,              -w_2, 0), App.Vector(0,               w_2, 0)))
   sk.addGeometry(constrGeoList,True)
   del constrGeoList
@@ -261,8 +261,8 @@ def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, 
   constraintList.append(Sketcher.Constraint('Vertical',   frontFrameIx))
 
   if fixedFrame:
-    constraintList.append(Sketcher.Constraint('DistanceY', frontFrameIx,1, frontFrameIx,2, aircraftWidth))
-    constraintList.append(Sketcher.Constraint('DistanceX', frontFrameIx,2, topFrameIx,2,   aircraftLength))
+    constraintList.append(Sketcher.Constraint('DistanceY', frontFrameIx,1, frontFrameIx,2, fuselageWidth))
+    constraintList.append(Sketcher.Constraint('DistanceX', frontFrameIx,2, topFrameIx,2,   fuselageLength))
   
   # sketch within frame
   constraintList.append(Sketcher.Constraint('PointOnObject', pointFrontIx,1,     frontFrameIx))
@@ -275,7 +275,7 @@ def MakeTopView(aircraftLength, aircraftWidth, xRelMax= 0.33, fixedFrame= True, 
   
   return sk
   
-def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True, name='skFaceView', plane='XZ', body=None):
+def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True, name='skFaceView', plane='XZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
     raise Exception("Pas de document actif") 
@@ -286,29 +286,29 @@ def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True
 	
   sk = NewSketch(name, plane, body)
 
-  #l_2=aircraftLength/2
-  h_2=aircraftHeight/2
+  #l_2=fuselageLength/2
+  h_2=fuselageHeight/2
   
   # Points 
   vects=[]
   #   Points from tail (elements 0..NbPointsTail-1)
   NbPointsTail=4
-  step=(1-xRelMax)*aircraftLength/(NbPointsTail-1)
+  step=(1-xRelMax)*fuselageLength/(NbPointsTail-1)
   for i in range(0, NbPointsTail):
-    x=aircraftLength -i*step
+    x=fuselageLength -i*step
     y=h_2 * (1+i/3)
     vects.append(App.Vector(x,y,0))
   xMax=x
   #   Points to front (elements NbPointsTai1..NbPointsTail+NbPointsFront-1)
   NbPointsFront=5
-  step=xRelMax*aircraftLength/NbPointsFront
+  step=xRelMax*fuselageLength/NbPointsFront
   for i in range(1, NbPointsFront+1):
     x=xMax-i*step
     y= h_2 * (1 + sqrt(2*x*xMax - x*x) / xMax)
     vects.append(App.Vector(x,y,0))
   #   symetric points
   for vect in vects[-2::-1]:
-    vects.append(App.Vector(vect.x,aircraftHeight-vect.y,0))
+    vects.append(App.Vector(vect.x,fuselageHeight-vect.y,0))
 
   # test
   #for vect in vects:
@@ -323,15 +323,6 @@ def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True
   splineIx=pointTailLastIx+1
   pointTopIx=NbPointsTail-1                           # top point at width/2 index
   pointBottompIx=pointTopIx + 2*NbPointsFront         # bottom point at -width/2 index
-  constraintList = []
-  #   front point on origin
-  constraintList.append(Sketcher.Constraint('Coincident', pointFrontIx,1, -1,1))  
-  #   first and last points coïncident on axis
-  #constraintList.append(Sketcher.Constraint('Coincident',   pointTailFirstIx,1, pointTailLastIx,1))  # redondant ?
-  constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,      -1))  
-
-  #sk.addConstraint(constraintList)
-  del constraintList
 
   # create limit frame (elements sk.GeometryCount ..+3, top horizontal line first, clock wise)
   topFrameIx=sk.GeometryCount 
@@ -339,10 +330,10 @@ def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True
   bottomFrameIx=topFrameIx+2   
   frontFrameIx=topFrameIx+3
   constrGeoList = []
-  constrGeoList.append(Part.LineSegment(App.Vector(0,              aircraftHeight, 0), App.Vector(aircraftLength, aircraftHeight, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength, aircraftHeight, 0), App.Vector(aircraftLength, 0,              0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(aircraftLength, 0,              0), App.Vector(0,              0,              0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(0,              0,              0), App.Vector(0,              aircraftHeight, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(0,              fuselageHeight, 0), App.Vector(fuselageLength, fuselageHeight, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(fuselageLength, fuselageHeight, 0), App.Vector(fuselageLength, 0,              0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(fuselageLength, 0,              0), App.Vector(0,              0,              0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(0,              0,              0), App.Vector(0,              fuselageHeight, 0)))
   sk.addGeometry(constrGeoList,True)
   del constrGeoList
   
@@ -355,10 +346,12 @@ def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True
   constraintList.append(Sketcher.Constraint('Vertical',   rearFrameIx))
   constraintList.append(Sketcher.Constraint('Horizontal', bottomFrameIx))
   constraintList.append(Sketcher.Constraint('Vertical',   frontFrameIx))
+  # left bottom on origin
+  constraintList.append(Sketcher.Constraint('Coincident', frontFrameIx,1, -1,1))  
 
   if fixedFrame:
-    constraintList.append(Sketcher.Constraint('DistanceY', frontFrameIx,1, frontFrameIx,2, aircraftHeight))
-    constraintList.append(Sketcher.Constraint('DistanceX', frontFrameIx,2, topFrameIx,2,   aircraftLength))
+    constraintList.append(Sketcher.Constraint('DistanceY', frontFrameIx,1, frontFrameIx,2, fuselageHeight))
+    constraintList.append(Sketcher.Constraint('DistanceX', topFrameIx,1,   topFrameIx,2,   fuselageLength))
   
   # sketch within frame
   constraintList.append(Sketcher.Constraint('PointOnObject', pointFrontIx,1,     frontFrameIx))
@@ -366,7 +359,7 @@ def MakeFaceView(aircraftLength, aircraftHeight, xRelMax= 0.33, fixedFrame= True
   constraintList.append(Sketcher.Constraint('PointOnObject', pointBottompIx,1,   bottomFrameIx))
   constraintList.append(Sketcher.Constraint('PointOnObject', splineIx,1,         rearFrameIx))
 
-  #sk.addConstraint(constraintList)
+  sk.addConstraint(constraintList)
   del constraintList
   
   return sk
