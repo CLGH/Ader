@@ -80,6 +80,7 @@ class CommandNew:
         adrLibPart.MakeFaceView(l, h, body=bf)
         
         doc.recompute()
+        Gui.SendMsgToActiveView("ViewFit")
 
 
 if App.GuiUp:

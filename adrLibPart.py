@@ -299,20 +299,22 @@ def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True
     y=h_2 * (1+i/3)
     vects.append(App.Vector(x,y,0))
   xMax=x
-  #   Points to front (elements NbPointsTai1..NbPointsTail+NbPointsFront-1)
+  #   Arbitrary points for front (2*NbPointsFront-1 elements)
   NbPointsFront=5
-  step=xRelMax*fuselageLength/NbPointsFront
-  for i in range(1, NbPointsFront+1):
-    x=xMax-i*step
-    y= h_2 * (1 + sqrt(2*x*xMax - x*x) / xMax)
+  xRel=[0.90, 0.83, 0.53, 0.12, 0.00, 0.12, 0.50, 0.70, 0.90]  # rel to xMax
+  hRel=[0.97, 0.92, 0.70, 0.60, 0.50, 0.28, 0.10, 0.03, 0.01]  # rel to fuselage height
+  for i in range(0, 2*NbPointsFront-1):
+    x= xRel[i] * xMax
+    y= hRel[i] * fuselageHeight
     vects.append(App.Vector(x,y,0))
-  #   symetric points
-  for vect in vects[-2::-1]:
+  #   symetric points at tail
+  for vect in vects[NbPointsTail-1::-1]:
     vects.append(App.Vector(vect.x,fuselageHeight-vect.y,0))
 
   # test
   #for vect in vects:
-  #  sk.addGeometry(Part.Point(vect),False)
+    #sk.addGeometry(Part.Point(vect),False)
+  #return sk
 
   MakeSpline(vects, perodic=False, sk=sk)
 
