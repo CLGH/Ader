@@ -8,7 +8,7 @@
 #*                                                                             *
 #*  Dependencies :                                                             *
 #*     - adrFrame.ui : GUI.                                                    *
-#*     - adrLibPart : sketch generation                                        *
+#*     - adrLibShapes : frame generation                                        *
 #*                                                                             *
 #*  History :                                                                  *
 #*     2025-03-12 : Initial release tested on FreeCAD 1.0.0                    *
@@ -29,7 +29,7 @@ import FreeCADGui as Gui
 import os
 from pathlib import Path
 from PySide import QtUiTools
-import adrLibPart
+import adrLibShapes
 
 debugFrame= False
 
@@ -91,7 +91,7 @@ class CommandFrame:
         elif self.form.rb16.isChecked(): 
             nb=16
         constrained=self.form.ckConstrained.isChecked()
-        sk= adrLibPart.MakeFrame(height, width, offset, x, fixedFrame=constrained, nbPoints=nb) 
+        sk= adrLibShapes.MakeFrame(height, width, offset, x, fixedFrame=constrained, nbPoints=nb) 
 
         # display
         App.ActiveDocument.recompute()

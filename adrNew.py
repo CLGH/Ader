@@ -27,7 +27,7 @@ import Spreadsheet
 import adrWBCommon as wb
 import adrInfos
 import adrSheetMain as adrspec
-import adrLibPart
+import adrLibShapes
 
 # debug messages handling
 localDebug= False;        # debug msg for this unit       
@@ -76,8 +76,8 @@ class CommandNew:
         bs.Label = 'Empennage'
 
         # set top/face views
-        adrLibPart.MakeTopView(l, w, body=bf)
-        adrLibPart.MakeFaceView(l, h, body=bf)
+        adrLibShapes.MakeTopView(l, w, body=bf)
+        adrLibShapes.MakeFaceView(l, h, body=bf)
         
         doc.recompute()
         Gui.SendMsgToActiveView("ViewFit")

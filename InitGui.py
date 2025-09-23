@@ -8,7 +8,7 @@
 #*  For FreeCAD Versions = 1.0.0 or >                                          *
 #*                                                                             *
 #*  History :                                                                  *
-#*    v 0.5 : 2025-xx-xx : Freedam version 1.0.0 add sketch, frame...          *
+#*    v 0.5 : 2025-xx-xx : FreeCAD version 1.0.0 add sketch, frame...          *
 #*    v 0.1 : 2023-07-11 : Initial release for developpers only                *
 #*                                                                             *
 #* This program is free software. You can redistribute it and/or modify        *
@@ -47,14 +47,19 @@ class AderWorkbench(Workbench):
         # "This function is executed when FreeCAD starts"
         # Ader WB commands
         import adrNew       # Create a new plane : infos, global parameters
-        import adrBuildNew  # build airplane from parameters sheet
-        import adrNacelle
+        import adrBuildNew  # build wing and stab from parameters sheet
+        import adrSections
+        import adrFrames    
         import adrFoil
+        import adrNacelle
         import adrFrame
         import adrExport    # Export to CPACS xml file
         self.comdList = [
             "adrNew",
             "adrBuildNew",
+
+            "adrSections",
+            "adrFrames",
 
             "adrFoil",
             "adrNacelle",
