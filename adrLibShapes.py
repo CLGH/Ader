@@ -238,7 +238,7 @@ def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoint
   if doc == None:
     raise Exception("Pas de document actif") 
   if body==None:
-    body=doc.getObject('Body')#temp
+    body=doc.getObject('Fuselage')
     if body == None:
       raise Exception("Pas de corps actif") 
   sk = adrLibPart.NewSketch(name, plane, body)
@@ -250,10 +250,9 @@ def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoint
   w=frameWidth/2
   # points for spline (elements 0..nbPoints-1 from top clockwise)
   for i in range(0, nbPoints):
-    angle=i*2*pi/nbPoints
-    r=sqrt((w*sin(angle))**2+(h*cos(angle))**2)
-    x=r*sin(angle)
-    y=r*cos(angle)+h+offset
+    angle=pi/2-i*2*pi/nbPoints
+    x=w*cos(angle)
+    y=h*sin(angle)+h+offset
     vects.append(App.Vector(x,y,0))
     #sk.addGeometry(Part.Point(App.Vector(x,y,0)),True)   # for test
 
@@ -285,10 +284,10 @@ def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoint
   bottomFrameIx=topFrameIx+2   
   leftFrameIx=topFrameIx+3
   constrGeoList = []
-  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, frameHeight-offset, 0),App.Vector(frameWidth/2,  frameHeight-offset, 0)))
-  constrGeoList.append(Part.LineSegment(App.Vector( frameWidth/2, frameHeight-offset, 0),App.Vector(frameWidth/2,  -offset,            0)))
-  constrGeoList.append(Part.LineSegment(App.Vector( frameWidth/2, -offset,            0),App.Vector(-frameWidth/2, -offset,            0)))
-  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, -offset,            0),App.Vector(-frameWidth/2, frameHeight-offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, frameHeight+offset, 0),App.Vector(frameWidth/2,  frameHeight+offset, 0)))
+  constrGeoList.append(Part.LineSegment(App.Vector( frameWidth/2, frameHeight+offset, 0),App.Vector(frameWidth/2,  offset,             0)))
+  constrGeoList.append(Part.LineSegment(App.Vector( frameWidth/2, offset,             0),App.Vector(-frameWidth/2, offset,             0)))
+  constrGeoList.append(Part.LineSegment(App.Vector(-frameWidth/2, offset,             0),App.Vector(-frameWidth/2, frameHeight+offset, 0)))
   sk.addGeometry(constrGeoList,True)
   del constrGeoList
   
@@ -355,7 +354,7 @@ def MakeFramesFromPlanes(body=None):
     PointLeft=section[0][0]
     PointRight=section[0][1]
     width=abs(PointLeft.Y - PointRight.Y)
-    print(i, ": ", offset, height, width, x)
+    print(i, ": ", offset, height, width, x)  # test
     MakeFrame(height, width, offset, x, body=body) 
     # suppress intermediate object
     doc.removeObject(plane.Name)

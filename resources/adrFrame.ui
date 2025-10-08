@@ -41,7 +41,7 @@
        <item row="1" column="1">
         <widget class="QDoubleSpinBox" name="sbWidth">
          <property name="decimals">
-          <number>0</number>
+          <number>2</number>
          </property>
          <property name="maximum">
           <double>9999999999999999455752309870428160.000000000000000</double>
@@ -64,7 +64,7 @@
           <string/>
          </property>
          <property name="decimals">
-          <number>0</number>
+          <number>2</number>
          </property>
          <property name="minimum">
           <double>-100000000000000004188152556421145795899143386664033828314342771180699648.000000000000000</double>
@@ -96,10 +96,10 @@
        <item row="0" column="1">
         <widget class="QDoubleSpinBox" name="sbHeight">
          <property name="decimals">
-          <number>0</number>
+          <number>2</number>
          </property>
          <property name="maximum">
-          <double>1000000000000000043845843045076197354634047651840.000000000000000</double>
+          <double>99999999999999997748809823456034029568.000000000000000</double>
          </property>
          <property name="value">
           <double>1000.000000000000000</double>
@@ -109,7 +109,10 @@
        <item row="5" column="1">
         <widget class="QDoubleSpinBox" name="sbx">
          <property name="decimals">
-          <number>0</number>
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <double>10000000000000000.000000000000000</double>
          </property>
         </widget>
        </item>
