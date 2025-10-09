@@ -36,7 +36,7 @@ debugFrames= False
 # resources ui, icon
 import adrWBCommon as wb
 #ui_file=  os.path.join(wb.resources_path, 'adrFrames.ui')
-icon_xpm= os.path.join(wb.icons_path,     'adrFrames.xpm')
+icon_xpm= os.path.join(wb.icons_path,     'adrFrames.svg')
 # translation
 def QT_TRANSLATE_NOOP(context, text):
     return text

@@ -37,7 +37,7 @@ debugSections= False
 # resources ui, icon
 import adrWBCommon as wb
 ui_file=  os.path.join(wb.resources_path, 'adrSections.ui')
-icon_xpm= os.path.join(wb.icons_path,     'adrSections.xpm')
+icon_xpm= os.path.join(wb.icons_path,     'adrSections.svg')
 # translation
 def QT_TRANSLATE_NOOP(context, text):
     return text
