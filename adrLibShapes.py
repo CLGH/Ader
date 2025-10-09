@@ -343,7 +343,7 @@ def MakeFramesFromPlanes(body=None):
 
   for plane in planes:
     sk=plane.Base
-    x= sk.AttachmentOffset.Base.x
+    x= sk.AttachmentOffset.Base.x + plane.Placement.Base.x
     face=plane.getSubObject("Face1")
     section= face.Surface.intersect(splineFace.Curve)
     PointTop=section[0][0]
