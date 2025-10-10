@@ -48,8 +48,8 @@ class CommandSections:
 
     def GetResources(self):
         return {'Pixmap': icon_xpm, 
-		'MenuText': QT_TRANSLATE_NOOP("Ader","Sections"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Create section planes")}
+		'MenuText': wb.translate("Ader","Sections"),
+		'ToolTip' : wb.translate("Ader","Create fuselage section planes")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

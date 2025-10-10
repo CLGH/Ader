@@ -31,7 +31,7 @@ localDebug= False;        # debug msg for this unit
 
 # resources ui, icon
 # ui_file= os.path.join(wb.resources_path, 'adrSheetMain.ui')
-icon_xpm = os.path.join(wb.icons_path, "adrSheetMain.xpm")
+icon_xpm = os.path.join(wb.icons_path, "adrSheetMain.svg")
 
 # Main sheet parameters
 fuselageParams = [

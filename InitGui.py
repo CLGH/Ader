@@ -28,7 +28,7 @@ import adrWBCommon as wb
 
 # resources icon, translated text
 global adrWB_Icon, adrWB_Tip
-adrWB_Icon = os.path.join(wb.icons_path, "adrIcon_128.png")
+adrWB_Icon = os.path.join(wb.icons_path, "ader_wb.svg")
 adrWB_Tip = wb.translate("Ader", "Tools to design an airplane with CPACS")
 
 # Qt tanslation handling

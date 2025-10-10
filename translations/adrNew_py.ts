@@ -3,7 +3,7 @@
 <context encoding="UTF-8">
     <name>Ader</name>
     <message encoding="UTF-8">
-        <location filename="../adrNew.py" line="45"/>
+        <location filename="../adrNew.py" line="46"/>
         <source>Créé un nouvel avion</source>
         <translation type="unfinished"></translation>
     </message>

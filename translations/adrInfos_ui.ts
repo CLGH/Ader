@@ -9,22 +9,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrInfos.ui" line="27"/>
+        <location filename="../resources/adrInfos.ui" line="34"/>
         <source>Author :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrInfos.ui" line="34"/>
+        <location filename="../resources/adrInfos.ui" line="53"/>
+        <source>CPACS file (optional) :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="76"/>
+        <source>Fuselage length [mm]:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="110"/>
+        <source>Fuselage width [mm] :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="117"/>
+        <source>Fuselage height [mm] :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="27"/>
         <source>Date :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrInfos.ui" line="47"/>
-        <source>CPACS file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="54"/>
+        <location filename="../resources/adrInfos.ui" line="83"/>
         <source>Name :</source>
         <translation type="unfinished"></translation>
     </message>

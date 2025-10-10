@@ -28,5 +28,25 @@
         <source>Height :</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="126"/>
+        <source>Constrained dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="133"/>
+        <source>8 points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="143"/>
+        <source>12 points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="153"/>
+        <source>16 points</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

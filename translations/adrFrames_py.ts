@@ -3,13 +3,13 @@
 <context>
     <name>Ader</name>
     <message>
-        <location filename="../adrNacelle.py" line="56"/>
-        <source>Create a nacelle</source>
+        <location filename="../adrFrames.py" line="50"/>
+        <source>Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrNacelle.py" line="55"/>
-        <source>Nacelle</source>
+        <location filename="../adrFrames.py" line="51"/>
+        <source>Sections to frames</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

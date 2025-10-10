@@ -3,8 +3,13 @@
 <context>
     <name>Ader</name>
     <message>
-        <location filename="../adrFoil.py" line="73"/>
+        <location filename="../adrFoil.py" line="75"/>
         <source>Create a foil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFoil.py" line="74"/>
+        <source>Foil</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

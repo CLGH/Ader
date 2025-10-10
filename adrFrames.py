@@ -48,7 +48,7 @@ class CommandFrames:
     def GetResources(self):
         return {'Pixmap': icon_xpm, 
 		'MenuText': QT_TRANSLATE_NOOP("Ader","Frames"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Create fuselage frames")}
+		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Sections to frames")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

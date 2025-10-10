@@ -2,34 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>newTaskPanel</name>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="17"/>
-        <source>Project infos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="27"/>
-        <source>Author :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="34"/>
-        <source>Date :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="47"/>
-        <source>CPACS file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrInfos.ui" line="54"/>
-        <source>Name :</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>foilTaskPanel</name>
     <message>
         <location filename="../resources/adrFoil.ui" line="17"/>
@@ -74,6 +46,102 @@
     <message>
         <location filename="../resources/adrFoil.ui" line="133"/>
         <source>nlf416</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>frameTaskPanel</name>
+    <message>
+        <location filename="../resources/adrSections.ui" line="17"/>
+        <source>Frame parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrSections.ui" line="40"/>
+        <source>Nb sections :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="30"/>
+        <source>Offset :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="37"/>
+        <source>x :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="57"/>
+        <source>Width :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="92"/>
+        <source>Height :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="126"/>
+        <source>Constrained dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="133"/>
+        <source>8 points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="143"/>
+        <source>12 points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrFrame.ui" line="153"/>
+        <source>16 points</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>newTaskPanel</name>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="17"/>
+        <source>Project infos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="27"/>
+        <source>Date :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="34"/>
+        <source>Author :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="53"/>
+        <source>CPACS file (optional) :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="76"/>
+        <source>Fuselage length [mm]:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="83"/>
+        <source>Name :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="110"/>
+        <source>Fuselage width [mm] :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrInfos.ui" line="117"/>
+        <source>Fuselage height [mm] :</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -152,63 +220,95 @@
     </message>
 </context>
 <context>
-    <name>frameTaskPanel</name>
-    <message>
-        <location filename="../resources/adrFrame.ui" line="17"/>
-        <source>Frame parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFrame.ui" line="30"/>
-        <source>Offset :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFrame.ui" line="37"/>
-        <source>x :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFrame.ui" line="57"/>
-        <source>Width :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFrame.ui" line="92"/>
-        <source>Height :</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Ader</name>
     <message>
-        <location filename="../InitGui.py" line="31"/>
+        <location filename="../InitGui.py" line="32"/>
         <source>Tools to design an airplane with CPACS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrNew.py" line="45"/>
-        <source>Créé un nouvel avion</source>
+        <location filename="../adrExport.py" line="74"/>
+        <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="77"/>
+        <location filename="../adrExport.py" line="75"/>
+        <source>Export to CPACS file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFoil.py" line="74"/>
+        <source>Foil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFoil.py" line="75"/>
+        <source>Create a foil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFrame.py" line="50"/>
+        <source>Frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFrame.py" line="51"/>
+        <source>Create a frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFrames.py" line="50"/>
+        <source>Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrFrames.py" line="51"/>
+        <source>Sections to frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrInfos.py" line="81"/>
         <source>Fichier CPACS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="83"/>
+        <location filename="../adrInfos.py" line="87"/>
         <source>Auteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="89"/>
+        <location filename="../adrInfos.py" line="93"/>
         <source>Nom du projet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="176"/>
+        <location filename="../adrInfos.py" line="180"/>
         <source>Infos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrNacelle.py" line="55"/>
+        <source>Nacelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrNacelle.py" line="56"/>
+        <source>Create a nacelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrNew.py" line="46"/>
+        <source>Créé un nouvel avion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrSections.py" line="51"/>
+        <source>Sections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrSections.py" line="52"/>
+        <source>Create fuselage section planes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -221,32 +321,12 @@
         <source>Spécifications</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../adrFoil.py" line="73"/>
-        <source>Create a foil</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../adrNacelle.py" line="54"/>
-        <source>Create a nacelle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../adrFrame.py" line="49"/>
-        <source>Create a frame</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>CPACS</name>
     <message>
-        <location filename="../adrInfos.py" line="134"/>
+        <location filename="../adrInfos.py" line="138"/>
         <source>Fichier CPACS :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../adrExport.py" line="73"/>
-        <source>Export to CPACS file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
