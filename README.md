@@ -32,7 +32,7 @@ Ader permet de lire et modifier ce fichier par une interface graphique en profit
 Une documentation utilisateur est disponible dans le dossier doc de l'atelier.  
 
 Cet atelier se nomme Ader en hommage à Clément Ader, pionnier de l'aviation. En souhaitant qu'il ait une suite aussi riche que l'aviation depuis M. Ader.  
-![Ader-Clement](/doc/resources/clement_ader_1891.jpg)  
+![Ader-Clement](/doc/resources/clement_ader_1891.png)  
 
 Si vous vous intéressez à la conception avion, l'adhésion à l'association Inter-Action http://inter-action-aero.fr/ est fortement recommandée !
 
