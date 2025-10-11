@@ -1,6 +1,7 @@
 ::WinTools\adrTranslate
 cd %AppData%\FreeCAD\Mod\Ader\translations
 WinTools\pylupdate5 ..\InitGui.py -ts InitGui.ts
+WinTools\pylupdate5 ..\adrBuildNew.py -ts adrBuildNew_py.ts
 WinTools\pylupdate5 ..\adrExport.py -ts adrExport_py.ts
 WinTools\pylupdate5 ..\adrFoil.py -ts adrFoil_py.ts
 WinTools\pylupdate5 ..\adrFrame.py -ts adrFrame_py.ts
@@ -19,8 +20,8 @@ WinTools\lupdate ..\resources\adrSections.ui -ts adrSections_ui.ts
 
 
 WinTools\lconvert -i adrFoil_ui.ts adrFrame_ui.ts adrInfos_ui.ts adrNacelle_ui.ts adrSections_ui.ts ^
-   InitGui.ts  adrExport_py.ts adrFoil_py.ts adrFrame_py.ts adrFrames_py.ts adrInfos_py.ts ^
-   adrNacelle_py.ts adrNew_py.ts adrSections_py.ts adrSheetMain_py.ts ^
+   InitGui.ts adrBuildNew_py.ts adrExport_py.ts adrFoil_py.ts adrFrame_py.ts adrFrames_py.ts ^
+   adrInfos_py.ts adrNacelle_py.ts adrNew_py.ts adrSections_py.ts adrSheetMain_py.ts ^
   -o adrWB.ts
 
 :: après traduction

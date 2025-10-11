@@ -3,28 +3,28 @@
 <context>
     <name>Ader</name>
     <message>
-        <location filename="../adrInfos.py" line="180"/>
-        <source>Infos</source>
+        <location filename="../adrBuildNew.py" line="44"/>
+        <source>Build</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="81"/>
-        <source>CPACS File</source>
+        <location filename="../adrBuildNew.py" line="45"/>
+        <source>Build from sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="87"/>
-        <source>Author</source>
+        <location filename="../adrBuildNew.py" line="61"/>
+        <source>Fuselage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="93"/>
-        <source>Project name</source>
+        <location filename="../adrBuildNew.py" line="67"/>
+        <source>Wing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrInfos.py" line="138"/>
-        <source>CPACS file :</source>
+        <location filename="../adrBuildNew.py" line="75"/>
+        <source>Stabilizer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

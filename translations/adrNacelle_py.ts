@@ -3,12 +3,12 @@
 <context>
     <name>Ader</name>
     <message>
-        <location filename="../adrNacelle.py" line="56"/>
+        <location filename="../adrNacelle.py" line="53"/>
         <source>Create a nacelle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrNacelle.py" line="55"/>
+        <location filename="../adrNacelle.py" line="52"/>
         <source>Nacelle</source>
         <translation type="unfinished"></translation>
     </message>

@@ -36,19 +36,17 @@ debugFrame= False
 # resources ui, icon
 import adrWBCommon as wb
 ui_file=  os.path.join(wb.resources_path, 'adrFrame.ui')
-icon_xpm= os.path.join(wb.icons_path,     'adrFrame.svg')
-# translation
-def QT_TRANSLATE_NOOP(context, text):
-    return text
+icon_cmd= os.path.join(wb.icons_path,     'adrFrame.svg')
+
 	
 	
 class CommandFrame:
     "the Frame command definition"
 
     def GetResources(self):
-        return {'Pixmap': icon_xpm, 
-                'MenuText': QT_TRANSLATE_NOOP("Ader","Frame"),
-                'ToolTip' : QT_TRANSLATE_NOOP("Ader","Create a frame")}
+        return {'Pixmap': icon_cmd, 
+                'MenuText': wb.translate("Ader","Frame"),
+                'ToolTip' : wb.translate("Ader","Create a frame")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

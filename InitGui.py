@@ -34,8 +34,7 @@ adrWB_Tip = wb.translate("Ader", "Tools to design an airplane with CPACS")
 # Qt tanslation handling
 Gui.addLanguagePath(os.path.join(wb.base_path, "translations"))
 Gui.updateLocale()
-def QT_TRANSLATE_NOOP(context, text):
-    return text
+
 
 class AderWorkbench(Workbench):
     def __init__(self):

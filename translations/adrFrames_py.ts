@@ -3,12 +3,12 @@
 <context>
     <name>Ader</name>
     <message>
-        <location filename="../adrFrames.py" line="50"/>
+        <location filename="../adrFrames.py" line="48"/>
         <source>Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrFrames.py" line="51"/>
+        <location filename="../adrFrames.py" line="49"/>
         <source>Sections to frames</source>
         <translation type="unfinished"></translation>
     </message>

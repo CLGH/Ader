@@ -33,18 +33,16 @@ debugAdrNew= False
 
 # resources ui, icon
 import adrWBCommon as wb
-icon_xpm= os.path.join(wb.icons_path,     'adrBuildNew.xpm')
-# translation
-def QT_TRANSLATE_NOOP(context, text):
-    return text
+icon_cmd= os.path.join(wb.icons_path, 'adrBuildNew.xpm')
+
 	
 class CommandBuildNew:
     "the BuildNew command definition"
 
     def GetResources(self):
-        return {'Pixmap': icon_xpm, 
-		'MenuText': QT_TRANSLATE_NOOP("Ader","Build"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Build from sheet")}
+        return {'Pixmap': icon_cmd, 
+		'MenuText': wb.translate("Ader","Build"),
+		'ToolTip' : wb.translate("Ader","Build from sheet")}
 
     def IsActive(self):
         return not App.ActiveDocument is None
@@ -60,13 +58,13 @@ class CommandBuildNew:
         bf=doc.getObject("Fuselage")
         if bf == None:
           bf=doc.addObject('PartDesign::Body','Fuselage')
-          bf.Label = 'Cellule'
+          bf.Label = wb.translate("Ader", "Fuselage")
        #   wing
         
         bw=doc.getObject("Wing") 
         if bw == None:
           bw=doc.addObject('PartDesign::Body','Wing')
-          bw.Label = 'Aile'
+          bw.Label = wb.translate("Ader", "Wing")
         w_x=spec.w_x*1000
         w_z=spec.w_z*1000
         bw.Placement = App.Placement(App.Vector(w_x,0,w_z),App.Rotation(App.Vector(0,0,1),0))
@@ -74,7 +72,7 @@ class CommandBuildNew:
         bs=doc.getObject("Stabilizer") 
         if bs == None:
           bs=doc.addObject('PartDesign::Body','Stabilizer')
-          bs.Label = 'Empennage'
+          bs.Label = wb.translate("Ader", "Stabilizer")
         s_x=spec.s_x*1000
         s_z=spec.s_z*1000
         bs.Placement = App.Placement(App.Vector(s_x,0,s_z),App.Rotation(App.Vector(0,0,1),0))

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="2.0">
-<context encoding="UTF-8">
+<context>
     <name>Ader</name>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../adrSheetMain.py" line="151"/>
-        <source>Feuille de spécifications</source>
+        <source>Specifications sheet</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../adrSheetMain.py" line="162"/>
-        <source>Spécifications</source>
+        <source>Specifications</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

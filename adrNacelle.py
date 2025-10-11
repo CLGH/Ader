@@ -41,19 +41,16 @@ debugNacelle= False
 # resources ui, icon
 import adrWBCommon as wb
 ui_file=  os.path.join(wb.resources_path, 'adrNacelle.ui')
-icon_xpm= os.path.join(wb.icons_path,     'adrNacelle.xpm')
-# translation
-def QT_TRANSLATE_NOOP(context, text):
-    return text
+icon_cmd= os.path.join(wb.icons_path,     'adrNacelle.xpm')
 	
 	
 class CommandNacelle:
     "the Nacelle command definition"
 
     def GetResources(self):
-        return {'Pixmap': icon_xpm, 
-		'MenuText': QT_TRANSLATE_NOOP("Ader","Nacelle"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Create a nacelle")}
+        return {'Pixmap': icon_cmd, 
+		'MenuText': wb.translate("Ader","Nacelle"),
+		'ToolTip' : wb.translate("Ader","Create a nacelle")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

@@ -34,7 +34,7 @@ localDebug= False;        # debug msg for this unit
 
 # resources ui, icon
 # ui_file= os.path.join(wb.resources_path, 'adrNew.ui')
-icon_xpm = os.path.join(wb.icons_path, "adrNew.xpm")
+icon_cmd = os.path.join(wb.icons_path, "adrNew.svg")
 
 
 class CommandNew:
@@ -42,8 +42,8 @@ class CommandNew:
 
     def GetResources(self):
         return {
-            "Pixmap": icon_xpm,
-            "MenuText": wb.translate("Ader", "Créé un nouvel avion"),
+            "Pixmap": icon_cmd,
+            "MenuText": wb.translate("Ader", "Create a new airplane"),
         }
 
     def IsActive(self):
@@ -69,11 +69,11 @@ class CommandNew:
         
         # set bodies
         bf=doc.addObject('PartDesign::Body','Fuselage')
-        bf.Label = 'Cellule'
+        bf.Label = wb.translate("Ader", "Fuselage")
         bw=doc.addObject('PartDesign::Body','Wing')
-        bw.Label = 'Aile'
+        bw.Label = wb.translate("Ader", "Wing")
         bs=doc.addObject('PartDesign::Body','Stabilizer')
-        bs.Label = 'Empennage'
+        bs.Label = wb.translate("Ader", "Stabilizer")
 
         # set top/face views
         adrLibShapes.MakeTopView(l, w, body=bf)

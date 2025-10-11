@@ -27,9 +27,9 @@ from PySide import QtCore
 localDebug= False;        # debug msg for this unit     
 
 # Qt translation handling
-# translate = App.Qt.translate
-def translate(context, text, disambig=None):
-    return QtCore.QCoreApplication.translate(context, text, disambig)
+translate = App.Qt.translate
+#def translate(context, text, disambig=None):
+#    return QtCore.QCoreApplication.translate(context, text, disambig)
 
 # resources path, files
 base_path= os.path.dirname(__file__)

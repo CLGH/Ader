@@ -31,7 +31,7 @@ localDebug= False;        # debug msg for this unit
 
 # resources ui, icon
 # ui_file= os.path.join(wb.resources_path, 'adrSheetMain.ui')
-icon_xpm = os.path.join(wb.icons_path, "adrSheetMain.svg")
+icon_cmd = os.path.join(wb.icons_path, "adrSheetMain.svg")
 
 # Main sheet parameters
 fuselageParams = [
@@ -122,7 +122,7 @@ class ViewProviderSheetMain:
     def getIcon(self):
         """Return the icon in XPM format which will appear in the tree view. This method is\
             optional and if not defined a default icon is shown."""
-        return icon_xpm
+        return icon_cmd
 
     def __getstate__(self):
         """When saving the document this object gets stored using Python's json module.\
@@ -147,8 +147,8 @@ class CommandSheetMain:
 
     def GetResources(self):
         return {
-            "Pixmap": icon_xpm,
-            "MenuText": wb.translate("Ader", "Feuille de spécifications"),
+            "Pixmap": icon_cmd,
+            "MenuText": wb.translate("Ader", "Specifications sheet"),
         }
 
     def IsActive(self):
@@ -159,7 +159,7 @@ class CommandSheetMain:
         sheet = doc.getObject("specifications")
         if not sheet:
             sheet = doc.addObject("Spreadsheet::Sheet", "specifications")
-            sheet.Label = wb.translate("Ader", "Spécifications")
+            sheet.Label = wb.translate("Ader", "Specifications")
             SheetMain(sheet)
             ViewProviderSheetMain(sheet.ViewObject)
             doc.recompute()

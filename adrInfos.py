@@ -34,7 +34,7 @@ localDebug= False;        # debug msg for this unit
 
 # resources ui, icon
 ui_file = os.path.join(wb.resources_path, "adrInfos.ui")
-icon_xpm = os.path.join(wb.icons_path, "adrInfos.xpm")
+icon_cmd = os.path.join(wb.icons_path, "adrInfos.xpm")
 
 
 def EditInfos(infos= None):
@@ -81,20 +81,20 @@ class Infos:
         obj.addProperty(
             "App::PropertyString",
             "cpacs_filename",
-            "Infos CPACS",
-            wb.translate("Ader", "Fichier CPACS"),
+            "Infos",
+            wb.translate("Ader", "CPACS File"),
         )
         obj.addProperty(
             "App::PropertyString",
             "author",
-            "Infos CPACS",
-            wb.translate("Ader", "Auteur"),
+            "Infos",
+            wb.translate("Ader", "Author"),
         )
         obj.addProperty(
             "App::PropertyString",
             "name",
-            "Infos CPACS",
-            wb.translate("Ader", "Nom du projet"),
+            "Infos",
+            wb.translate("Ader", "Project name"),
         )
 
     def onChanged(self, fp, prop):
@@ -135,7 +135,7 @@ class InfosTaskPanel:
         return True
 
     def retranslateUi(self, TaskPanel):
-        TaskPanel.lCPACS.setText(wb.translate("CPACS", "Fichier CPACS :"))
+        TaskPanel.lCPACS.setText(wb.translate("Ader", "CPACS file :"))
         wb.debugMsg("retranslate", localDebug)
 
 
@@ -151,7 +151,7 @@ class ViewProviderInfos:
     def getIcon(self):
         """Return the icon in XPM format which will appear in the tree view. This method is\
             optional and if not defined a default icon is shown."""
-        return icon_xpm
+        return icon_cmd
 
     def __getstate__(self):
         """When saving the document this object gets stored using Python's json module.\
@@ -177,7 +177,7 @@ class CommandInfos:
     """CPACS infos"""
 
     def GetResources(self):
-        return {"Pixmap": icon_xpm, "MenuText": wb.translate("Ader", "Infos")}
+        return {"Pixmap": icon_cmd, "MenuText": wb.translate("Ader", "Infos")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

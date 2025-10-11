@@ -26,7 +26,7 @@
     <message>
       <location filename="../resources/adrFoil.ui" line="76"/>
       <source>Sketch only</source>
-      <translation>Esquisse</translation>
+      <translation>Esquisse seule</translation>
     </message>
     <message>
       <location filename="../resources/adrFoil.ui" line="99"/>
@@ -122,7 +122,7 @@
     <message>
       <location filename="../resources/adrInfos.ui" line="53"/>
       <source>CPACS file (optional) :</source>
-      <translation type="unfinished">CPACS file (optional) :</translation>
+      <translation>Fichier CPACS (optionnel) :</translation>
     </message>
     <message>
       <location filename="../resources/adrInfos.ui" line="76"/>
@@ -216,7 +216,7 @@
     <message>
       <location filename="../resources/adrNacelle.ui" line="232"/>
       <source>Sketch only</source>
-      <translation>Esquisse</translation>
+      <translation>Esquisse uniquement</translation>
     </message>
   </context>
   <context>
@@ -227,59 +227,59 @@
       <translation>Atelier pour modéliser un avion avec CPACS</translation>
     </message>
     <message>
-      <location filename="../adrExport.py" line="74"/>
+      <location filename="../adrExport.py" line="72"/>
       <source>Export</source>
       <translation type="unfinished">Export</translation>
     </message>
     <message>
-      <location filename="../adrExport.py" line="75"/>
+      <location filename="../adrExport.py" line="73"/>
       <source>Export to CPACS file</source>
       <translation>Export vers CPACS</translation>
     </message>
     <message>
-      <location filename="../adrFoil.py" line="74"/>
+      <location filename="../adrFoil.py" line="71"/>
       <source>Foil</source>
       <translation>Profil</translation>
     </message>
     <message>
-      <location filename="../adrFoil.py" line="75"/>
+      <location filename="../adrFoil.py" line="72"/>
       <source>Create a foil</source>
       <translation>Créé un profil / tronçon</translation>
     </message>
     <message>
-      <location filename="../adrFrame.py" line="50"/>
+      <location filename="../adrFrame.py" line="48"/>
       <source>Frame</source>
       <translation>Cadre</translation>
     </message>
     <message>
-      <location filename="../adrFrame.py" line="51"/>
+      <location filename="../adrFrame.py" line="49"/>
       <source>Create a frame</source>
       <translation>Créé un cadre</translation>
     </message>
     <message>
-      <location filename="../adrFrames.py" line="50"/>
+      <location filename="../adrFrames.py" line="48"/>
       <source>Frames</source>
       <translation>Cadres</translation>
     </message>
     <message>
-      <location filename="../adrFrames.py" line="51"/>
+      <location filename="../adrFrames.py" line="49"/>
       <source>Sections to frames</source>
       <translation>Cadres depuis sections</translation>
     </message>
     <message>
       <location filename="../adrInfos.py" line="81"/>
-      <source>Fichier CPACS</source>
-      <translation type="unfinished">Fichier CPACS</translation>
+      <source>CPACS File</source>
+      <translation>Fichier CPACS</translation>
     </message>
     <message>
       <location filename="../adrInfos.py" line="87"/>
-      <source>Auteur</source>
-      <translation type="unfinished">Auteur</translation>
+      <source>Author</source>
+      <translation>Auteur</translation>
     </message>
     <message>
       <location filename="../adrInfos.py" line="93"/>
-      <source>Nom du projet</source>
-      <translation type="unfinished">Nom du projet</translation>
+      <source>Project name</source>
+      <translation>Nom du projet</translation>
     </message>
     <message>
       <location filename="../adrInfos.py" line="180"/>
@@ -287,39 +287,54 @@
       <translation type="unfinished">Infos</translation>
     </message>
     <message>
-      <location filename="../adrNacelle.py" line="55"/>
+      <location filename="../adrNacelle.py" line="52"/>
       <source>Nacelle</source>
       <translation type="unfinished">Nacelle</translation>
     </message>
     <message>
-      <location filename="../adrNacelle.py" line="56"/>
+      <location filename="../adrNacelle.py" line="53"/>
       <source>Create a nacelle</source>
       <translation>Créé une nacelle</translation>
     </message>
     <message>
       <location filename="../adrNew.py" line="46"/>
-      <source>Créé un nouvel avion</source>
-      <translation type="unfinished">Créé un nouvel avion</translation>
+      <source>Create a new airplane</source>
+      <translation>Créé un nouvel avion</translation>
     </message>
     <message>
-      <location filename="../adrSections.py" line="51"/>
+      <location filename="../adrNew.py" line="72"/>
+      <source>Fuselage</source>
+      <translation>Cellule</translation>
+    </message>
+    <message>
+      <location filename="../adrNew.py" line="74"/>
+      <source>Wing</source>
+      <translation>Aile</translation>
+    </message>
+    <message>
+      <location filename="../adrNew.py" line="76"/>
+      <source>Stabilizer</source>
+      <translation>Empennage</translation>
+    </message>
+    <message>
+      <location filename="../adrSections.py" line="48"/>
       <source>Sections</source>
       <translation type="unfinished">Sections</translation>
     </message>
     <message>
-      <location filename="../adrSections.py" line="52"/>
+      <location filename="../adrSections.py" line="49"/>
       <source>Create fuselage section planes</source>
-      <translation type="unfinished">Create fuselage section planes</translation>
+      <translation>Créé des plans de sections de fuselage</translation>
     </message>
     <message>
       <location filename="../adrSheetMain.py" line="151"/>
-      <source>Feuille de spécifications</source>
-      <translation type="unfinished">Feuille de spécifications</translation>
+      <source>Specifications sheet</source>
+      <translation>Feuille de spécifications</translation>
     </message>
     <message>
       <location filename="../adrSheetMain.py" line="162"/>
-      <source>Spécifications</source>
-      <translation type="unfinished">Spécifications</translation>
+      <source>Specifications</source>
+      <translation>Spécifications</translation>
     </message>
   </context>
   <context>

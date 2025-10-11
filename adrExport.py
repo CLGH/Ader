@@ -28,10 +28,8 @@ localDebug= False
 
 # resources ui, icon
 #ui_file= os.path.join(wb.resources_path, 'adrExport.ui')
-icon_xpm= os.path.join(wb.icons_path, 'adrExport.xpm')
-# translation
-def QT_TRANSLATE_NOOP(context, text):
-    return text
+icon_cmd= os.path.join(wb.icons_path, 'adrExport.xpm')
+
 
 def ExportWing(wing_name):
     '''Export wing profiles from specifications'''
@@ -71,9 +69,9 @@ class CommandExport:
     '''Export profiles >> wing  >> aircraft'''
 
     def GetResources(self):
-        return {'Pixmap': icon_xpm, 
-		'MenuText': QT_TRANSLATE_NOOP("Ader","Export"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Export to CPACS file")}
+        return {'Pixmap': icon_cmd, 
+		'MenuText': wb.translate("Ader","Export"),
+		'ToolTip' : wb.translate("Ader","Export to CPACS file")}
 
     def IsActive(self):
         return not App.ActiveDocument is None

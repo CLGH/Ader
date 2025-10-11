@@ -41,11 +41,8 @@ debugFoil= False
 # resources ui, icon
 import adrWBCommon as wb
 ui_file=  os.path.join(wb.resources_path, 'adrFoil.ui')
-icon_xpm= os.path.join(wb.icons_path,     'adrFoil.svg')
-# translation
-def QT_TRANSLATE_NOOP(context, text):
-    return text
-	
+icon_cmd= os.path.join(wb.icons_path,     'adrFoil.svg')
+
 	
 def MakeSketchFromDat(datFile, length, setting=0, sk_y=0, dieth=0, skBody=None):
     filename=os.path.join(wb.dat_path, datFile)
@@ -70,9 +67,9 @@ class CommandFoil:
     "the Foil command definition"
 
     def GetResources(self):
-        return {'Pixmap': icon_xpm, 
-		'MenuText': QT_TRANSLATE_NOOP("Ader","Foil"),
-		'ToolTip' : QT_TRANSLATE_NOOP("Ader","Create a foil")}
+        return {'Pixmap': icon_cmd, 
+		'MenuText': wb.translate("Ader","Foil"),
+		'ToolTip' : wb.translate("Ader","Create a foil")}
 
     def IsActive(self):
         return not App.ActiveDocument is None
