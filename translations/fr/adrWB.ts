@@ -227,6 +227,31 @@
       <translation>Atelier pour modéliser un avion avec CPACS</translation>
     </message>
     <message>
+      <location filename="../adrBuildNew.py" line="44"/>
+      <source>Build</source>
+      <translation>Construire</translation>
+    </message>
+    <message>
+      <location filename="../adrBuildNew.py" line="45"/>
+      <source>Build from sheet</source>
+      <translation>Aile / empennage depuis spécifs</translation>
+    </message>
+    <message>
+      <location filename="../adrNew.py" line="72"/>
+      <source>Fuselage</source>
+      <translation>Cellule</translation>
+    </message>
+    <message>
+      <location filename="../adrNew.py" line="74"/>
+      <source>Wing</source>
+      <translation>Aile</translation>
+    </message>
+    <message>
+      <location filename="../adrNew.py" line="76"/>
+      <source>Stabilizer</source>
+      <translation>Empennage</translation>
+    </message>
+    <message>
       <location filename="../adrExport.py" line="72"/>
       <source>Export</source>
       <translation type="unfinished">Export</translation>
@@ -282,6 +307,11 @@
       <translation>Nom du projet</translation>
     </message>
     <message>
+      <location filename="../adrInfos.py" line="138"/>
+      <source>CPACS file :</source>
+      <translation type="unfinished">CPACS file :</translation>
+    </message>
+    <message>
       <location filename="../adrInfos.py" line="180"/>
       <source>Infos</source>
       <translation type="unfinished">Infos</translation>
@@ -302,21 +332,6 @@
       <translation>Créé un nouvel avion</translation>
     </message>
     <message>
-      <location filename="../adrNew.py" line="72"/>
-      <source>Fuselage</source>
-      <translation>Cellule</translation>
-    </message>
-    <message>
-      <location filename="../adrNew.py" line="74"/>
-      <source>Wing</source>
-      <translation>Aile</translation>
-    </message>
-    <message>
-      <location filename="../adrNew.py" line="76"/>
-      <source>Stabilizer</source>
-      <translation>Empennage</translation>
-    </message>
-    <message>
       <location filename="../adrSections.py" line="48"/>
       <source>Sections</source>
       <translation type="unfinished">Sections</translation>
@@ -335,14 +350,6 @@
       <location filename="../adrSheetMain.py" line="162"/>
       <source>Specifications</source>
       <translation>Spécifications</translation>
-    </message>
-  </context>
-  <context>
-    <name>CPACS</name>
-    <message>
-      <location filename="../adrInfos.py" line="138"/>
-      <source>Fichier CPACS :</source>
-      <translation type="unfinished">Fichier CPACS :</translation>
     </message>
   </context>
 </TS>
