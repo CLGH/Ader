@@ -35,13 +35,12 @@ debugFrames= False
 
 # resources ui, icon
 import adrWBCommon as wb
-#ui_file=  os.path.join(wb.resources_path, 'adrFrames.ui')
+ui_file=  os.path.join(wb.resources_path, 'adrFrames.ui')
 icon_cmd= os.path.join(wb.icons_path,     'adrFrames.svg')
 
 	
-	
 class CommandFrames:
-    "the Frames command definition"
+    "Frames command : create fuselage frames from section"
 
     def GetResources(self):
         return {'Pixmap': icon_cmd, 
@@ -52,11 +51,18 @@ class CommandFrames:
         return not App.ActiveDocument is None
 
     def Activated(self):
-
+        wb.InTaskPanel(self, ui_file)
+ 
+    def accept(self):
+        if self.form.rb8.isChecked(): 
+            nb=8
+        elif self.form.rb12.isChecked(): 
+            nb=12
+        elif self.form.rb16.isChecked(): 
+            nb=16
         # make Frames
         adrLibShapes.MakeFramesFromPlanes()
-    
-        # display
+        wb.TaskTerminated(self)
         App.ActiveDocument.recompute()
 
 

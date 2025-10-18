@@ -46,7 +46,7 @@ class AderWorkbench(Workbench):
         # "This function is executed when FreeCAD starts"
         # Ader WB commands
         import adrNew       # Create a new plane : infos, global parameters
-        import adrBuildNew  # build wing and stab from parameters sheet
+        import adrBuildWings  # build wing and stab from parameters sheet
         import adrSections
         import adrFrames    
         import adrFoil
@@ -55,7 +55,7 @@ class AderWorkbench(Workbench):
         import adrExport    # Export to CPACS xml file
         self.comdList = [
             "adrNew",
-            "adrBuildNew",
+            "adrBuildWings",
 
             "adrSections",
             "adrFrames",

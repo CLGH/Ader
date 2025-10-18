@@ -41,7 +41,7 @@ icon_cmd= os.path.join(wb.icons_path,     'adrSections.svg')
 	
 	
 class CommandSections:
-    "the Sections command definition"
+    "Sections command : create section planes to build fuselage."
 
     def GetResources(self):
         return {'Pixmap': icon_cmd, 
@@ -52,21 +52,13 @@ class CommandSections:
         return not App.ActiveDocument is None
 
     def Activated(self):
-        loader=QtUiTools.QUiLoader()
-        self.form=loader.load(ui_file)
-
-        # default values
-        self.form.sbNbSections.setValue(wb.GetValue('Sections', 'nb', 8))
-
-        if not self.form.exec_():
-            quit()
-        
-        # save values
-        nb=self.form.sbNbSections.value()
-        wb.SaveValue('Sections', 'nb', nb)
-
+        wb.InTaskPanel(self, ui_file)
+ 
+    def accept(self):
         # make sections
+        nb= self.form.sbNbSections.value()
         adrLibPart.MakeIntersectionPlanes(nb)
+        wb.TaskTerminated(self)
     
         # display
         App.ActiveDocument.recompute()

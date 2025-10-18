@@ -75,40 +75,36 @@ class CommandFoil:
         return not App.ActiveDocument is None
 
     def Activated(self):
-        loader=QtUiTools.QUiLoader()
-        self.form=loader.load(ui_file)
-
-        # default values
-        self.form.eDat.setText        (wb.GetValue('Foil', 'datFile', 'nlf416'))
-        self.form.sbChord.setValue    (wb.GetValue('Foil', 'chord', 1000))
-        self.form.sbSetting.setValue  (wb.GetValue('Foil', 'setting', 0))
-        self.form.sby.setValue        (wb.GetValue('Foil', 'y', 0))
-        self.form.rbPad.setChecked    (wb.GetValue('Foil', 'pad', False))
-        self.form.sbPadLength.setValue(wb.GetValue('Foil', 'lPad', 5000))
-
-        if not self.form.exec_():
-            quit()
+        wb.InTaskPanel(self, ui_file)
+ 
+    def LocalInitTaskValues(self):
+        "initialize TaskPanel values"
+        # dat profiles
+        files, profiles= wb.ListDatProfiles()
+        # sort files associated to profiles
+        paired = sorted(zip(files, profiles), key=lambda t: t[0].lower())
+        if paired:
+            files, profiles = map(list, zip(*paired))
+        else:
+            files, profiles = [], []
         
-        # save values
-        wb.SaveValue('Foil', 'datFile', self.form.eDat.text())
-        wb.SaveValue('Foil', 'chord', self.form.sbChord.value())
-        wb.SaveValue('Foil', 'setting', self.form.sbSetting.value())
-        wb.SaveValue('Foil', 'y', self.form.sby.value())
-        wb.SaveValue('Foil', 'pad', self.form.rbPad.isChecked())
-        wb.SaveValue('Foil', 'lPad', self.form.sbPadLength.value())
+        self.form.cbDat.clear()
+        self.form.cbDat.addItems(files)
+        return False
 
-        datFile=self.form.eDat.text()
+    def accept(self):
+        datFile=self.form.cbDat.currentText()
         length = self.form.sbChord.value()
         setting = self.form.sbSetting.value()
         y=self.form.sby.value()
+        # make sketch
         name, sk= MakeSketchFromDat(datFile, length, setting, y) 
-
         # make pad
         if self.form.rbPad.isChecked():
             length=self.form.sbPadLength.value()
             adrLibPart.MakePad(sk, length, 'p'+name, midplane=1)
     
-        # display
+        wb.TaskTerminated(self)
         App.ActiveDocument.recompute()
 
 

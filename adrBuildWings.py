@@ -14,7 +14,7 @@
 #*     2025-03-06 : Initial release tested on FreeCAD 1.0.0                    *
 #*                                                                             *
 #*******************************************************************************
-''' @package adrBuildNew
+''' @package adrBuildWings
     Produces an airplace structure and elements.
  
 
@@ -141,4 +141,4 @@ class CommandBuildNew:
 
 if App.GuiUp:
     #register the FreeCAD command
-    Gui.addCommand('adrBuildNew', CommandBuildNew())
+    Gui.addCommand('adrBuildWings', CommandBuildNew())

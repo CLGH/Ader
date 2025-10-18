@@ -41,7 +41,7 @@ debugNacelle= False
 # resources ui, icon
 import adrWBCommon as wb
 ui_file=  os.path.join(wb.resources_path, 'adrNacelle.ui')
-icon_cmd= os.path.join(wb.icons_path,     'adrNacelle.xpm')
+icon_cmd= os.path.join(wb.icons_path,     'adrNacelle.svg')
 	
 	
 class CommandNacelle:
@@ -56,30 +56,9 @@ class CommandNacelle:
         return not App.ActiveDocument is None
 
     def Activated(self):
-        loader=QtUiTools.QUiLoader()
-        self.form=loader.load(ui_file)
+        wb.InTaskPanel(self, ui_file)
 
-        # default values
-        self.form.sbLength.setValue   (wb.GetValue('Nacelle', 'length', 1000))
-        self.form.sbDiameter.setValue (wb.GetValue('Nacelle', 'diameter', 400))
-        self.form.sbNbPoints.setValue (wb.GetValue('Nacelle', 'nbPoints', 100))
-        self.form.rbLyon.setChecked   (wb.GetValue('Nacelle', 'Lyon', True))
-        self.form.rbHoerner.setChecked(wb.GetValue('Nacelle', 'Hoerner', False))
-        self.form.rbDuhamel.setChecked(wb.GetValue('Nacelle', 'Duhamel', False))
-        self.form.rbNACA.setChecked   (wb.GetValue('Nacelle', 'NACA', False))
-
-        if not self.form.exec_():
-            quit()
-           
-        # save values
-        wb.SaveValue('Nacelle', 'length',   self.form.sbLength.value())
-        wb.SaveValue('Nacelle', 'diameter', self.form.sbDiameter.value())
-        wb.SaveValue('Nacelle', 'nbPoints', self.form.sbNbPoints.value())
-        wb.SaveValue('Nacelle', 'Lyon',     self.form.rbLyon.isChecked())
-        wb.SaveValue('Nacelle', 'Hoerner',  self.form.rbHoerner.isChecked())
-        wb.SaveValue('Nacelle', 'Duhamel',  self.form.rbDuhamel.isChecked())
-        wb.SaveValue('Nacelle', 'NACA',     self.form.rbNACA.isChecked())
-      
+    def accept(self):      
         XMaxRel= 0
         length=self.form.sbLength.value()
         diameter=self.form.sbDiameter.value()
@@ -130,7 +109,7 @@ class CommandNacelle:
             adrLibPart.MakeRevolution(sk, self.form.sbRevolveAngle.value(), 'r'+nacelleType)
             sk.Visibility = False
           
-        # display
+        wb.TaskTerminated(self)
         App.ActiveDocument.recompute()
 
 

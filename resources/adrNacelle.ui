@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>343</width>
-    <height>366</height>
+    <height>293</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -243,58 +243,10 @@
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QDialogButtonBox" name="bbButtons">
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-     <property name="centerButtons">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>bbButtons</sender>
-   <signal>accepted()</signal>
-   <receiver>nacelleTaskPanel</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>133</x>
-     <y>219</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>133</x>
-     <y>120</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bbButtons</sender>
-   <signal>rejected()</signal>
-   <receiver>nacelleTaskPanel</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>133</x>
-     <y>219</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>133</x>
-     <y>120</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>rbHoerner</sender>
    <signal>toggled(bool)</signal>

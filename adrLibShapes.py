@@ -354,7 +354,7 @@ def MakeFramesFromPlanes(body=None):
     PointLeft=section[0][0]
     PointRight=section[0][1]
     width=abs(PointLeft.Y - PointRight.Y)
-    print(i, ": ", offset, height, width, x)  # test
+    #print(i, ": ", offset, height, width, x)  # test
     MakeFrame(height, width, offset, x, body=body) 
     # suppress intermediate object
     doc.removeObject(plane.Name)

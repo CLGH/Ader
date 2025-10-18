@@ -21,7 +21,10 @@ __url__ = "https://.fr"
 import configparser
 import os
 import FreeCAD as App
+import FreeCADGui as Gui
+import PySide
 from PySide import QtCore
+from PySide import QtGui
 
 # debug messages handling
 localDebug= False;        # debug msg for this unit     
@@ -67,7 +70,38 @@ def ListDatProfiles():
         
     return files, profiles
 
+def InTaskPanel(CommandClass, ui_file):
+    """
+    ui_file in FreeCAD TaskPanel.
+     """
+    CommandClass.form = Gui.PySideUic.loadUi(ui_file)
+
+    if hasattr(CommandClass, 'LocalInitTaskValues'):
+        InitComplete = CommandClass.LocalInitTaskValues()
+    else:
+        InitComplete = False
+        
+    if not InitComplete:
+        InitFormValues(CommandClass.form)
+
+    Gui.Control.showDialog(CommandClass)
+
+def TaskTerminated(CommandClass):
+    """
+    Save values and close TaskPanel.
+     """
+    if hasattr(CommandClass, 'LocalSaveTaskValues'):
+        SaveComplete = CommandClass.LocalSaveTaskValues()
+    else:
+        SaveComplete = False
+        
+    if not SaveComplete:
+        SaveFormValues(CommandClass.form)
+
+    Gui.Control.closeDialog()
+
 # persistance handling
+
 iniFilename=os.path.join(base_path, "Ader.ini")
 def GetValue(section, key, defaultValue):
     """
@@ -95,7 +129,6 @@ def GetValue(section, key, defaultValue):
                 pass
         
         return raw_value  # default
-
 
 def SaveValue(section, key, value):
     """
@@ -126,3 +159,68 @@ def str_to_bool(s):
         return False
     else:
         raise ValueError(f"Not a boolean : {s}")
+
+def InitFormValues(form):
+    """
+    Set widgets persistent values.
+    """
+    section = form.objectName() if hasattr(form, 'objectName') else None
+    if not section:
+        return
+
+    for w in form.findChildren(QtCore.QObject):
+        key = w.objectName() if hasattr(w, 'objectName') else None
+
+        # set value, default with current object
+        if key:
+            if hasattr(w, "setValue"):
+                w.setValue(GetValue(section, key, w.value()) )          
+            elif hasattr(w, "setChecked"):
+                w.setChecked(GetValue(section, key, w.isChecked()) )
+            elif isinstance(w, QtGui.QLineEdit):
+                w.setText(GetValue(section, key, w.text()) )
+            elif isinstance(w, QtGui.QPlainTextEdit) or isinstance(w, QtGui.QTextEdit):
+                default_value = w.toPlainText() # todo
+            elif isinstance(w, QtGui.QComboBox):
+                # try current text
+                #default_value = w.currentText() if w.currentText() else w.currentIndex()
+                w.setCurrentIndex(GetValue(section, key, w.currentIndex()) )
+            elif hasattr(w, "date") and hasattr(w, "setDate"):
+                # QDateEdit / QDateTimeEdit -> use ISO string
+                try:
+                    default_value = w.date().toString(QtCore.Qt.ISODate)
+                except Exception:
+                    default_value = None
+ 			
+def SaveFormValues(form):
+    """
+	Save widgets persistent values.
+    """
+
+    section = form.objectName() if hasattr(form, 'objectName') else None
+    if not section:
+        return
+
+    for w in form.findChildren(QtCore.QObject):
+        key = w.objectName() if hasattr(w, 'objectName') else None
+        debugMsg(key, localDebug)
+
+        # valeur par défaut prise depuis l'état courant du widget
+        if key:
+            if hasattr(w, "setValue"):
+                SaveValue(section, key, w.value())           
+            elif hasattr(w, "setChecked"):
+                SaveValue(section, key, w.isChecked()) 
+            elif isinstance(w, QtGui.QLineEdit):
+                SaveValue(section, key, w.text()) 
+            elif isinstance(w, QtGui.QPlainTextEdit) or isinstance(w, QtGui.QTextEdit):
+                SaveValue(section, key, w.toPlainText())
+            elif isinstance(w, QtGui.QComboBox):
+                SaveValue(section, key, w.currentIndex())
+            elif hasattr(w, "date") and hasattr(w, "setDate"):
+                # QDateEdit / QDateTimeEdit -> use ISO string
+                try:
+                    default_value = w.date().toString(QtCore.Qt.ISODate)
+                    SaveValue(section, key, default_value)
+                except Exception:
+                    default_value = None
