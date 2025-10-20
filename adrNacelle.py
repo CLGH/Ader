@@ -77,6 +77,11 @@ class CommandNacelle:
             nacelleType="NACA"
             coords= adrLibShapes.getNACACoords(length, diameter, nbPoints)
 
+        if self.form.ckNewBody.isChecked():
+            body=App.ActiveDocument.addObject('PartDesign::Body','Nacelle')
+        else:
+            body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
+
         vects = []
         for coord in reversed(coords):
             vects.append(coord)
@@ -84,7 +89,7 @@ class CommandNacelle:
         if not self.form.rbRevolve.isChecked():
             for coord in coords[1:]:
                 vects.append(App.Vector(coord.x, -coord.y, 0))
-        sk=adrLibPart.MakeSpline(vects, 'sk'+nacelleType)
+        sk=adrLibPart.MakeSpline(vects, 'sk'+nacelleType, body=body)
 
         # make pad
         if self.form.rbPad.isChecked():

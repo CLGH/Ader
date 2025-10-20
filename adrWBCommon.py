@@ -172,7 +172,7 @@ def InitFormValues(form):
         key = w.objectName() if hasattr(w, 'objectName') else None
 
         # set value, default with current object
-        if key:
+        if key and key != 'qt_spinbox_lineedit':
             if hasattr(w, "setValue"):
                 w.setValue(GetValue(section, key, w.value()) )          
             elif hasattr(w, "setChecked"):
@@ -206,7 +206,7 @@ def SaveFormValues(form):
         debugMsg(key, localDebug)
 
         # valeur par défaut prise depuis l'état courant du widget
-        if key:
+        if key and key != 'qt_spinbox_lineedit':
             if hasattr(w, "setValue"):
                 SaveValue(section, key, w.value())           
             elif hasattr(w, "setChecked"):

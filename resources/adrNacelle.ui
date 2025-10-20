@@ -21,17 +21,75 @@
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <layout class="QGridLayout" name="gridLayout">
-       <item row="15" column="0">
-        <widget class="QRadioButton" name="rbPad">
-         <property name="statusTip">
-          <string/>
+       <item row="15" column="1">
+        <widget class="QDoubleSpinBox" name="sbRevolveAngle">
+         <property name="suffix">
+          <string>°</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>360.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QRadioButton" name="rbDuhamel">
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
          </property>
          <property name="text">
-          <string>Pad length :</string>
+          <string>Duhamel, simplified</string>
          </property>
          <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
+          <string notr="true">buttonGroup_2</string>
          </attribute>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QRadioButton" name="rbHoerner">
+         <property name="contextMenuPolicy">
+          <enum>Qt::NoContextMenu</enum>
+         </property>
+         <property name="text">
+          <string>Hoerner, ellipse/cos, Dmax at &gt;</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="sbDiameter">
+         <property name="suffix">
+          <string> mm</string>
+         </property>
+         <property name="maximum">
+          <double>100000000000000007629769841091887003294964970946560.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>400.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Length :</string>
+         </property>
         </widget>
        </item>
        <item row="0" column="1">
@@ -53,60 +111,20 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QDoubleSpinBox" name="sbDiameter">
-         <property name="suffix">
-          <string> mm</string>
-         </property>
-         <property name="maximum">
-          <double>100000000000000007629769841091887003294964970946560.000000000000000</double>
-         </property>
-         <property name="value">
-          <double>400.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Type :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QRadioButton" name="rbDuhamel">
-         <property name="contextMenuPolicy">
-          <enum>Qt::NoContextMenu</enum>
+       <item row="15" column="0">
+        <widget class="QRadioButton" name="rbRevolve">
+         <property name="statusTip">
+          <string/>
          </property>
          <property name="text">
-          <string>Duhamel, simplified</string>
+          <string>Revolve :</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
          <attribute name="buttonGroup">
-          <string notr="true">buttonGroup_2</string>
+          <string notr="true">buttonGroup</string>
          </attribute>
-        </widget>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Number of points</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QDoubleSpinBox" name="sbRevolveAngle">
-         <property name="suffix">
-          <string>°</string>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <double>360.000000000000000</double>
-         </property>
-         <property name="value">
-          <double>360.000000000000000</double>
-         </property>
         </widget>
        </item>
        <item row="8" column="1">
@@ -122,6 +140,43 @@
          </attribute>
         </widget>
        </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Type :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="1">
+        <widget class="QDoubleSpinBox" name="sbPadLength">
+         <property name="maximum">
+          <double>99999999999999.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Number of points</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QSpinBox" name="sbNbPoints">
+         <property name="minimum">
+          <number>10</number>
+         </property>
+         <property name="maximum">
+          <number>1000</number>
+         </property>
+         <property name="value">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="2">
         <widget class="QDoubleSpinBox" name="sbXMaxRel">
          <property name="maximum">
@@ -135,43 +190,30 @@
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
-        <widget class="QDoubleSpinBox" name="sbPadLength">
-         <property name="maximum">
-          <double>99999999999999.000000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QRadioButton" name="rbHoerner">
-         <property name="contextMenuPolicy">
-          <enum>Qt::NoContextMenu</enum>
-         </property>
+       <item row="14" column="0">
+        <widget class="QRadioButton" name="rbSketchOnly">
          <property name="text">
-          <string>Hoerner, ellipse/cos, Dmax at &gt;</string>
+          <string>Sketch only</string>
          </property>
          <property name="checked">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <attribute name="buttonGroup">
-          <string notr="true">buttonGroup_2</string>
+          <string notr="true">buttonGroup</string>
          </attribute>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="16" column="0">
+        <widget class="QRadioButton" name="rbPad">
+         <property name="statusTip">
+          <string/>
          </property>
          <property name="text">
-          <string>Length :</string>
+          <string>Pad length :</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="1">
@@ -190,35 +232,6 @@
          </attribute>
         </widget>
        </item>
-       <item row="14" column="0">
-        <widget class="QRadioButton" name="rbRevolve">
-         <property name="statusTip">
-          <string/>
-         </property>
-         <property name="text">
-          <string>Revolve :</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QSpinBox" name="sbNbPoints">
-         <property name="minimum">
-          <number>10</number>
-         </property>
-         <property name="maximum">
-          <number>1000</number>
-         </property>
-         <property name="value">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
@@ -227,16 +240,10 @@
         </widget>
        </item>
        <item row="13" column="0">
-        <widget class="QRadioButton" name="rbSketchOnly">
+        <widget class="QCheckBox" name="ckNewBody">
          <property name="text">
-          <string>Sketch only</string>
+          <string>in a new body</string>
          </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
       </layout>
