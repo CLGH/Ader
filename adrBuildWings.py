@@ -42,7 +42,7 @@ class CommandBuildNew:
     def GetResources(self):
         return {'Pixmap': icon_cmd, 
 		'MenuText': wb.translate("Ader","Build"),
-		'ToolTip' : wb.translate("Ader","Build from sheet")}
+		'ToolTip' : wb.translate("Ader","Build wing/stab from sheet")}
 
     def IsActive(self):
         return not App.ActiveDocument is None
@@ -51,7 +51,7 @@ class CommandBuildNew:
         doc=App.activeDocument()
         spec = doc.getObject("specifications")
         if not spec:
-            raise Exception("Pas de feuille de spécifications.") 
+            raise Exception(wb.translate("No specification sheet"))
 
         # create bodies
         #   fuselage

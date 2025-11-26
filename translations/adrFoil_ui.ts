@@ -9,43 +9,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="30"/>
+        <location filename="../resources/adrFoil.ui" line="31"/>
         <source>Pad length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="37"/>
+        <location filename="../resources/adrFoil.ui" line="38"/>
         <source>Setting [°] :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="56"/>
+        <location filename="../resources/adrFoil.ui" line="57"/>
         <source>Dat file :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="76"/>
+        <location filename="../resources/adrFoil.ui" line="77"/>
         <source>Sketch only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="99"/>
+        <location filename="../resources/adrFoil.ui" line="100"/>
         <source>y :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="106"/>
+        <location filename="../resources/adrFoil.ui" line="107"/>
         <source>Chord :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="113"/>
+        <location filename="../resources/adrFoil.ui" line="114"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFoil.ui" line="133"/>
-        <source>nlf416</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

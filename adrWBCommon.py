@@ -31,8 +31,6 @@ localDebug= False;        # debug msg for this unit
 
 # Qt translation handling
 translate = App.Qt.translate
-#def translate(context, text, disambig=None):
-#    return QtCore.QCoreApplication.translate(context, text, disambig)
 
 # resources path, files
 base_path= os.path.dirname(__file__)
@@ -224,3 +222,19 @@ def SaveFormValues(form):
                     SaveValue(section, key, default_value)
                 except Exception:
                     default_value = None
+
+def GetObjectsByPrefix(prefix: str) -> list:
+    """
+    Returns the list of objects in the active document whose name start with prefix.
+    """
+    doc = App.activeDocument()
+    matching_objects = []
+    if doc is None:
+        print(translate("No active document"))
+        return matching_objects
+
+    for obj in doc.Objects:
+        if obj.Name.startswith(prefix):
+            matching_objects.append(obj)
+            
+    return matching_objects

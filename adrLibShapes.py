@@ -44,11 +44,11 @@ localDebug = False
 def MakeTopView(fuselageLength, fuselageWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception("Pas de corps actif") 
+      raise Exception(wb.translate("No active body")) 
 	
   sk = adrLibPart.NewSketch(name, plane, body)
 
@@ -145,11 +145,11 @@ def MakeTopView(fuselageLength, fuselageWidth, xRelMax= 0.33, fixedFrame= True, 
 def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True, name='skFaceView', plane='XZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception("Pas de corps actif") 
+      raise Exception(wb.translate("No active body")) 
 	
   sk = adrLibPart.NewSketch(name, plane, body)
 
@@ -236,11 +236,11 @@ def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True
 def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoints=8, name='skFrame', plane='YZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception("Pas de corps actif") 
+      raise Exception(wb.translate("No active body")) 
   sk = adrLibPart.NewSketch(name, plane, body)
   sk.AttachmentOffset.Base.z = xPos
 
@@ -320,11 +320,11 @@ def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoint
 def MakeFramesFromPlanes(body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception("Pas de corps actif") 
+      raise Exception(wb.translate("No active body")) 
 
   skFace = doc.getObject("skFaceView")
   splineFace=skFace.getSubObject("Edge1")
@@ -332,15 +332,8 @@ def MakeFramesFromPlanes(body=None):
   splineTop=skTop.getSubObject("Edge1")
 
   # get planes
-  planes = []
-  planes.append(doc.getObject("extSection"))
-  for i in range(1, 100):
-    plane = doc.getObject("extSection"+str(i).zfill(3))
-    if plane != None:
-      planes.append(plane)
-    else:
-      break
-
+  planes = wb.GetObjectsByPrefix("extSection")
+  # for each plane get intersection with fuselage splines
   for plane in planes:
     sk=plane.Base
     x= sk.AttachmentOffset.Base.x + plane.Placement.Base.x
@@ -398,7 +391,7 @@ def FoilCoordsFromDat(filename, chord = 1.0,  setting = 0, originalFormat=False)
     afile.close()
 
     if len(coords) < 3:
-        raise ValueError("Did not find enough coordinates.")
+        raise ValueError(wb.translate("Ader","Did not find enough coordinates"))
         return
 
     # sometimes coords are divided in upper an lower side
@@ -666,7 +659,7 @@ def generateNacaCoords(number, n, finite_TE, half_cosine_spacing,scale,posX,posY
     elif len(number)==5:
         coords=naca5(number, n, finite_TE, half_cosine_spacing)
     else:
-        raise ValueError("Invalid NACA number")
+        raise ValueError(wb.translate("Ader","Invalid NACA number"))
     return coords
 
 def generateNaca(number, n=240, finite_TE = False, half_cosine_spacing = True,scale=1,posX=0,posY=0,posZ=0,rotX=0,rotY=0,rotZ=0,rot=0,useSpline=True,splitSpline=False):

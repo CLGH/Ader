@@ -74,7 +74,9 @@ class CommandExport:
 		'ToolTip' : wb.translate("Ader","Export to CPACS file")}
 
     def IsActive(self):
-        return not App.ActiveDocument is None
+        # to be completed
+        # return not App.ActiveDocument is None
+        return False
 
     def Activated(self):
         #wb.debugMsg(doc.Name + "\n", localDebug)

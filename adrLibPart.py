@@ -21,6 +21,7 @@ import FreeCADGui as Gui
 import Part
 import Sketcher
 from math import sin, cos, sqrt, pi, radians
+import adrWBCommon as wb
 import adrLibPart
 
 # debug messages handling
@@ -31,7 +32,7 @@ def NewSketch(name='Sketch', plane='XY', body=None):
   if body == None:
     body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception("Pas de corps actif") 
+    raise Exception(wb.translate("No active body")) 
   sk=body.newObject('Sketcher::SketchObject', name)
 
   if plane ==  'XY':
@@ -43,7 +44,7 @@ def NewSketch(name='Sketch', plane='XY', body=None):
   else:
     attach = None
   if attach == None:
-    raise Exception("Pas de plan spécifié")
+    raise Exception(wb.translate("Ader","No plane specified"))
   sk.AttachmentSupport = (attach, [''])
   sk.MapMode = 'FlatFace'
 
@@ -52,7 +53,7 @@ def NewSketch(name='Sketch', plane='XY', body=None):
 def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if sk == None:
     sk=NewSketch(name, plane, body)
   originIx=sk.GeometryCount                # get nb elements
@@ -93,7 +94,7 @@ def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=
 def MakePad(sketch, length, name= 'Pad', reversed=0, midplane=0, offset=0):
   body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception("Pas de corps actif") 
+    raise Exception(wb.translate("No active body")) 
   pad=body.newObject('PartDesign::Pad', name)
   pad.Profile = (sketch, ['',])
   pad.ReferenceAxis = (sketch,['N_Axis'])
@@ -112,7 +113,7 @@ def MakeRevolution(sketch, angle, name= 'Revolution', reversed=0, midplane=0):
   doc=App.ActiveDocument
   body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception("Pas de corps actif") 
+    raise Exception(wb.translate("No active body")) 
   rev=body.newObject('PartDesign::Revolution', name)
   rev.Profile = (sketch, ['',])
   rev.ReferenceAxis = (doc.getObject('X_Axis'), [''])
@@ -124,19 +125,20 @@ def MakeRevolution(sketch, angle, name= 'Revolution', reversed=0, midplane=0):
 def MakeIntersectionPlanes(nbPlanes=8, body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception("Pas de document actif") 
+    raise Exception(wb.translate("No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception("Pas de corps actif") 
+      raise Exception(wb.translate("No active body")) 
   spec = doc.getObject("specifications")
   if not spec:
-    raise Exception("Pas de feuille de spécifications.") 
+    raise Exception(wb.translate("No specification sheet"))
   fLength=spec.fus_l*1000 
   fWidth = spec.fus_w*1000 
   fHeight = spec.fus_h*1000 
   
-  step = (fLength-10)/(nbPlanes-1)
+  space = 1        # space from front and back 
+  step = (fLength-2*space)/(nbPlanes-1)
   for i in range(int(nbPlanes)):
     skSection=adrLibPart.NewSketch('skSection', 'XY', body)
     geoList = []
@@ -146,7 +148,7 @@ def MakeIntersectionPlanes(nbPlanes=8, body=None):
 
     skSection.addConstraint(Sketcher.Constraint('Vertical', 0))
 
-    skSection.AttachmentOffset.Base.x=5+i*step
+    skSection.AttachmentOffset.Base.x=space+i*step
     skSection.AttachmentOffset.Base.z=-5
 
     # Extrude

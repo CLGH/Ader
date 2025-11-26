@@ -2,14 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>frameTaskPanel</name>
+    <name>sectionsTaskPanel</name>
     <message>
         <location filename="../resources/adrSections.ui" line="17"/>
-        <source>Frame parameters</source>
+        <source>Fuselage sections parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrSections.ui" line="40"/>
+        <location filename="../resources/adrSections.ui" line="30"/>
         <source>Nb sections :</source>
         <translation type="unfinished"></translation>
     </message>

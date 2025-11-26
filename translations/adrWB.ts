@@ -9,56 +9,46 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="30"/>
+        <location filename="../resources/adrFoil.ui" line="31"/>
         <source>Pad length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="37"/>
+        <location filename="../resources/adrFoil.ui" line="38"/>
         <source>Setting [°] :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="56"/>
+        <location filename="../resources/adrFoil.ui" line="57"/>
         <source>Dat file :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="76"/>
+        <location filename="../resources/adrFoil.ui" line="77"/>
         <source>Sketch only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="99"/>
+        <location filename="../resources/adrFoil.ui" line="100"/>
         <source>y :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="106"/>
+        <location filename="../resources/adrFoil.ui" line="107"/>
         <source>Chord :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrFoil.ui" line="113"/>
+        <location filename="../resources/adrFoil.ui" line="114"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrFoil.ui" line="133"/>
-        <source>nlf416</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>frameTaskPanel</name>
     <message>
-        <location filename="../resources/adrSections.ui" line="17"/>
+        <location filename="../resources/adrFrame.ui" line="17"/>
         <source>Frame parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrSections.ui" line="40"/>
-        <source>Nb sections :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -153,69 +143,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="30"/>
-        <source>Pad length :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="46"/>
-        <location filename="../resources/adrNacelle.ui" line="59"/>
-        <source> mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="72"/>
-        <source>Type :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="82"/>
-        <source>Duhamel, simplified</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="92"/>
-        <source>Number of points</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="99"/>
+        <location filename="../resources/adrNacelle.ui" line="27"/>
         <source>°</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="118"/>
-        <source>NACA (4 digits = 00 + D/L %)</source>
+        <location filename="../resources/adrNacelle.ui" line="46"/>
+        <source>Duhamel, simplified</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="154"/>
+        <location filename="../resources/adrNacelle.ui" line="59"/>
         <source>Hoerner, ellipse/cos, Dmax at &gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="173"/>
+        <location filename="../resources/adrNacelle.ui" line="72"/>
+        <location filename="../resources/adrNacelle.ui" line="104"/>
+        <source> mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="91"/>
         <source>Length :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="183"/>
-        <source>Lyon, model A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../resources/adrNacelle.ui" line="199"/>
+        <location filename="../resources/adrNacelle.ui" line="120"/>
         <source>Revolve :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../resources/adrNacelle.ui" line="136"/>
+        <source>NACA (4 digits = 00 + D/L %)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="146"/>
+        <source>Type :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="163"/>
+        <source>Number of points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="196"/>
+        <source>Sketch only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="212"/>
+        <source>Pad length :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../resources/adrNacelle.ui" line="225"/>
+        <source>Lyon, model A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrNacelle.ui" line="238"/>
         <source>Diameter / height :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../resources/adrNacelle.ui" line="232"/>
-        <source>Sketch only</source>
+        <location filename="../resources/adrNacelle.ui" line="245"/>
+        <source>in a new body</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>sectionsTaskPanel</name>
+    <message>
+        <location filename="../resources/adrSections.ui" line="17"/>
+        <source>Fuselage sections parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../resources/adrSections.ui" line="30"/>
+        <source>Nb sections :</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -227,18 +235,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrBuildNew.py" line="44"/>
+        <location filename="../adrBuildWings.py" line="44"/>
         <source>Build</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrBuildWings.py" line="45"/>
+        <source>Build wing/stab from sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../adrBuildNew.py" line="45"/>
         <source>Build from sheet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../adrNew.py" line="72"/>
-        <source>Fuselage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -249,6 +257,21 @@
     <message>
         <location filename="../adrNew.py" line="76"/>
         <source>Stabilizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrBuildFuselage.py" line="45"/>
+        <source>Build fuselage from frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrBuildFuselage.py" line="56"/>
+        <source>No frames for fuselage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrNew.py" line="72"/>
+        <source>Fuselage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -282,12 +305,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrFrames.py" line="48"/>
+        <location filename="../adrFrames.py" line="47"/>
         <source>Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../adrFrames.py" line="49"/>
+        <location filename="../adrFrames.py" line="48"/>
         <source>Sections to frames</source>
         <translation type="unfinished"></translation>
     </message>
@@ -314,6 +337,21 @@
     <message>
         <location filename="../adrInfos.py" line="180"/>
         <source>Infos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrLibPart.py" line="47"/>
+        <source>No plane specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrLibShapes.py" line="394"/>
+        <source>Did not find enough coordinates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrLibShapes.py" line="662"/>
+        <source>Invalid NACA number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
