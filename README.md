@@ -19,14 +19,14 @@ Ader créé deux esquisses, vue de face et vue de haut, pour le fuselage et une 
 
 ## Usage
 ### Construction du fuselage
-Modifiez les esquisses vue de face et de haut du fuselage. Utilisez la fonction "Sections" pour créer des plans de coupe du fuselage. Positionnez ces plans (clic droit > Transformer) puis utilisez la fonction "Cadres" pour avoir des couples ajustés dans le plan respectif, cadre qu'on peut retravailler? Construire le fuselage avec la fonction lissage.  
+Modifiez les esquisses vue de face et de haut du fuselage. Utilisez la fonction "Sections" pour créer des plans de coupe du fuselage. Positionnez ces plans (clic droit > Transformer) puis utilisez la fonction "Cadres" pour avoir des couples ajustés dans le plan respectif, cadre qu'on peut retravailler? Le bouton "Construire le fuselage" effectue un lissage.  
 
 ### Construction aile / empennage
 Remplissez la fiche de spécifications :  
 ![Specs](/doc/resources/ader_spec.png)  
 Pour les profils donnez le nom du fichier dat. Les fichers .dat, compilés par l'UUIC (https://m-selig.ae.illinois.edu/ads/coord_database.html), sont dans le répertoire dat_profiles de l'atelier.  
 
-Cliquez sur le bouton "Construire" pour construire obtenir l'aile et l'empennage.  
+Cliquez sur le bouton "Construire les ailes et empennages" pour construire obtenir l'aile et l'empennage.  
 ![Build](/doc/resources/ader_build.png)  
   
 Après construction tous les profils et cadres sont modifiables par le sketcher.  
