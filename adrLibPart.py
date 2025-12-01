@@ -32,7 +32,7 @@ def NewSketch(name='Sketch', plane='XY', body=None):
   if body == None:
     body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception(wb.translate("No active body")) 
+    raise Exception(wb.translate("Ader", "No active body")) 
   sk=body.newObject('Sketcher::SketchObject', name)
 
   if plane ==  'XY':
@@ -53,7 +53,7 @@ def NewSketch(name='Sketch', plane='XY', body=None):
 def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if sk == None:
     sk=NewSketch(name, plane, body)
   originIx=sk.GeometryCount                # get nb elements
@@ -94,7 +94,7 @@ def MakeSpline(vects, name='skSpline', plane='XY', perodic=False, body=None, sk=
 def MakePad(sketch, length, name= 'Pad', reversed=0, midplane=0, offset=0):
   body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception(wb.translate("No active body")) 
+    raise Exception(wb.translate("Ader", "No active body")) 
   pad=body.newObject('PartDesign::Pad', name)
   pad.Profile = (sketch, ['',])
   pad.ReferenceAxis = (sketch,['N_Axis'])
@@ -113,7 +113,7 @@ def MakeRevolution(sketch, angle, name= 'Revolution', reversed=0, midplane=0):
   doc=App.ActiveDocument
   body=Gui.ActiveDocument.ActiveView.getActiveObject('pdbody')
   if body == None:
-    raise Exception(wb.translate("No active body")) 
+    raise Exception(wb.translate("Ader", "No active body")) 
   rev=body.newObject('PartDesign::Revolution', name)
   rev.Profile = (sketch, ['',])
   rev.ReferenceAxis = (doc.getObject('X_Axis'), [''])
@@ -125,14 +125,14 @@ def MakeRevolution(sketch, angle, name= 'Revolution', reversed=0, midplane=0):
 def MakeIntersectionPlanes(nbPlanes=8, body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception(wb.translate("No active body")) 
+      raise Exception(wb.translate("Ader", "No active body")) 
   spec = doc.getObject("specifications")
   if not spec:
-    raise Exception(wb.translate("No specification sheet"))
+    raise Exception(wb.translate("Ader", "No specification sheet"))
   fLength=spec.fus_l*1000 
   fWidth = spec.fus_w*1000 
   fHeight = spec.fus_h*1000 

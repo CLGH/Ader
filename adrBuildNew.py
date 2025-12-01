@@ -51,7 +51,7 @@ class CommandBuildNew:
         doc=App.activeDocument()
         spec = doc.getObject("specifications")
         if not spec:
-            raise Exception(wb.translate("No specification sheet"))
+            raise Exception(wb.translate("Ader", "No specification sheet"))
 
         # create bodies
         #   fuselage

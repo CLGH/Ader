@@ -250,6 +250,11 @@
       <translation>Aile / empennage depuis spécifs</translation>
     </message>
     <message>
+      <location filename="../adrLibPart.py" line="135"/>
+      <source>No specification sheet</source>
+      <translation>Pas de feuille de spécification</translation>
+    </message>
+    <message>
       <location filename="../adrNew.py" line="74"/>
       <source>Wing</source>
       <translation>Aile</translation>
@@ -343,6 +348,16 @@
       <location filename="../adrLibPart.py" line="47"/>
       <source>No plane specified</source>
       <translation>Pas de plan spécifié</translation>
+    </message>
+    <message>
+      <location filename="../adrLibShapes.py" line="323"/>
+      <source>No active document</source>
+      <translation>Pas de document actif</translation>
+    </message>
+    <message>
+      <location filename="../adrLibShapes.py" line="327"/>
+      <source>No active body</source>
+      <translation>Pas de corps actif</translation>
     </message>
     <message>
       <location filename="../adrLibShapes.py" line="394"/>

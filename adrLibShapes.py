@@ -44,11 +44,11 @@ localDebug = False
 def MakeTopView(fuselageLength, fuselageWidth, xRelMax= 0.33, fixedFrame= True, name='skTopView', plane='XY', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception(wb.translate("No active body")) 
+      raise Exception(wb.translate("Ader", "No active body")) 
 	
   sk = adrLibPart.NewSketch(name, plane, body)
 
@@ -145,11 +145,11 @@ def MakeTopView(fuselageLength, fuselageWidth, xRelMax= 0.33, fixedFrame= True, 
 def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True, name='skFaceView', plane='XZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception(wb.translate("No active body")) 
+      raise Exception(wb.translate("Ader", "No active body")) 
 	
   sk = adrLibPart.NewSketch(name, plane, body)
 
@@ -236,11 +236,11 @@ def MakeFaceView(fuselageLength, fuselageHeight, xRelMax= 0.33, fixedFrame= True
 def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoints=8, name='skFrame', plane='YZ', body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception(wb.translate("No active body")) 
+      raise Exception(wb.translate("Ader", "No active body")) 
   sk = adrLibPart.NewSketch(name, plane, body)
   sk.AttachmentOffset.Base.z = xPos
 
@@ -320,11 +320,11 @@ def MakeFrame(frameHeight, frameWidth, offset, xPos=0, fixedFrame= True, nbPoint
 def MakeFramesFromPlanes(body=None):
   doc=App.ActiveDocument
   if doc == None:
-    raise Exception(wb.translate("No active document")) 
+    raise Exception(wb.translate("Ader", "No active document")) 
   if body==None:
     body=doc.getObject('Fuselage')
     if body == None:
-      raise Exception(wb.translate("No active body")) 
+      raise Exception(wb.translate("Ader", "No active body")) 
 
   skFace = doc.getObject("skFaceView")
   splineFace=skFace.getSubObject("Edge1")

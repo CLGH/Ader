@@ -27,5 +27,10 @@
         <source>Stabilizer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../adrBuildNew.py" line="54"/>
+        <source>No specification sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

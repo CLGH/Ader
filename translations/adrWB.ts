@@ -250,6 +250,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../adrLibPart.py" line="135"/>
+        <source>No specification sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../adrNew.py" line="74"/>
         <source>Wing</source>
         <translation type="unfinished"></translation>
@@ -342,6 +347,16 @@
     <message>
         <location filename="../adrLibPart.py" line="47"/>
         <source>No plane specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrLibShapes.py" line="323"/>
+        <source>No active document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../adrLibShapes.py" line="327"/>
+        <source>No active body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
