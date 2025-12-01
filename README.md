@@ -1,14 +1,7 @@
 # The FreeCAD Ader Workbench
 
-&lt;p align="center"&gt;
-  &lt;a href="README.md"&gt;English&lt;/a&gt; |
-  &lt;a href="README.fr.md"&gt;Français&lt;/a&gt;
-&lt;/p&gt;
-
-&lt;p align="center"&gt;
-  &lt;a href="README.md"&gt;&lt;img src="https://img.shields.io/badge/lang-en-blue.svg" alt="English"&gt;&lt;/a&gt;
-  &lt;a href="README.fr.md"&gt;&lt;img src="https://img.shields.io/badge/lang-fr-blue.svg" alt="Français"&gt;&lt;/a&gt;
-&lt;/p&gt;
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](README.md)
+[![fr](https://img.shields.io/badge/lang-fr-blue.svg)](README.fr.md)
 
 ![L'Avion](/doc/resources/avion_ader.png)
 
