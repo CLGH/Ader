@@ -8,6 +8,7 @@
 #*  For FreeCAD Versions = 1.0.0 or >                                          *
 #*                                                                             *
 #*  History :                                                                  *
+#*    v 0.8 : 2026-03-04 : sections, frames...                                 *
 #*    v 0.5 : 2025-xx-xx : FreeCAD version 1.0.0 add sketch, frame...          *
 #*    v 0.1 : 2023-07-11 : Initial release for developpers only                *
 #*                                                                             *
@@ -45,15 +46,19 @@ class AderWorkbench(Workbench):
     def Initialize(self):
         # "This function is executed when FreeCAD starts"
         # Ader WB commands
-        import adrNew            # Create a new plane : infos, global parameters
-        import adrBuildFuselage  # build fuselage from frames
-        import adrBuildWings     # build wing and stab from parameters sheet
-        import adrSections
-        import adrFrames    
-        import adrFoil
-        import adrNacelle
-        import adrFrame
-        import adrExport    # Export to CPACS xml file
+        try:
+          import adrNew            # Create a new plane : infos, global parameters
+          import adrBuildFuselage  # build fuselage from frames
+          import adrBuildWings     # build wing and stab from parameters sheet
+          import adrSections       # build sections 
+          import adrFrames         # build frames from sections 
+          import adrFoil           # build a single airfoil section
+          import adrNacelle        # buid a nacelle
+          import adrFrame          # build a single frame 
+          import adrExport         # Export to CPACS xml file
+        except ImportError as e:
+          wb.consoleMsg(wb.translate(f"Missing modules: {e}"), type='E')
+        
         self.comdList = [
             "adrNew",
     
@@ -61,18 +66,17 @@ class AderWorkbench(Workbench):
             "adrFrames",
 
             "adrFoil",
-            "adrNacelle",
             "adrFrame",
+            "adrNacelle",
 
             "adrBuildFuselage",
             "adrBuildWings",
-
-            "adrExport",
         ]
 
         # creates a new toolbar with your commands
         self.appendToolbar("Ader", self.comdList)
         # creates a new menu
+        self.comdList+= ["adrExport"]
         self.appendMenu("Ader", self.comdList)
 
     def Activated(self):

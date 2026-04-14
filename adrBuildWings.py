@@ -36,8 +36,8 @@ import adrWBCommon as wb
 icon_cmd= os.path.join(wb.icons_path, 'adrBuildWings.svg')
 
 	
-class CommandBuildNew:
-    "the BuildNew command definition"
+class CommandBuildWings:
+    "the BuildWings command definition"
 
     def GetResources(self):
         return {'Pixmap': icon_cmd, 
@@ -105,10 +105,10 @@ class CommandBuildNew:
             pass
         if profile and profile != '': 
             chord=spec.vs_ci*1000
-            name, sk_in=adrFoil.MakeSketchFromDat(profile, chord, skBody=bs)
+            name, sk_in=adrFoil.MakeSketchFromDat(profile, chord, skBody=bs, plane= 'XY')
             chord=spec.vs_ce*1000
             y = spec.vs_length * 1000
-            name, sk_ext=adrFoil.MakeSketchFromDat(profile, chord, sk_y=y, skBody=bs)
+            name, sk_ext=adrFoil.MakeSketchFromDat(profile, chord, sk_y=y, skBody=bs, plane= 'XY')
             # loft the vertical stabilizer
             loft=bs.newObject('PartDesign::AdditiveLoft','lStab_v')
             loft.Profile = sk_in
@@ -141,4 +141,4 @@ class CommandBuildNew:
 
 if App.GuiUp:
     #register the FreeCAD command
-    Gui.addCommand('adrBuildWings', CommandBuildNew())
+    Gui.addCommand('adrBuildWings', CommandBuildWings())

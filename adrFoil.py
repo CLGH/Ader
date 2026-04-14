@@ -44,7 +44,7 @@ ui_file=  os.path.join(wb.resources_path, 'adrFoil.ui')
 icon_cmd= os.path.join(wb.icons_path,     'adrFoil.svg')
 
 	
-def MakeSketchFromDat(datFile, length, setting=0, sk_y=0, dieth=0, skBody=None):
+def MakeSketchFromDat(datFile, length, setting=0, sk_y=0, dieth=0, skBody=None, plane='XZ'):
     filename=os.path.join(wb.dat_path, datFile)
     if Path(filename).suffix == '':
         filename += '.dat'
@@ -56,7 +56,7 @@ def MakeSketchFromDat(datFile, length, setting=0, sk_y=0, dieth=0, skBody=None):
         vects.append(App.Vector(coord))
     if coords[0] != coords[-1]:   # close the wire
         vects.append(App.Vector(coords[0]))
-    sk=adrLibPart.MakeSpline(vects, 'sk'+name, plane='XZ', body=skBody)
+    sk=adrLibPart.MakeSpline(vects, 'sk'+name, plane, body=skBody)
     # set y position
     y=sk_y*sin(radians(dieth))
     z=sk_y*cos(radians(dieth))
